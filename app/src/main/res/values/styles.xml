@@ -1,0 +1,62 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/redColor</item>
+    </style>
+
+    <style name="header_name">
+        <item name="android:text">@string/app_name</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/login_header_size</item>
+        <item name="android:layout_marginTop">133dp</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+    <style name="Editetxt_style">
+        <item name="android:textColorHint">@color/white</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/password</item>
+        <item name="android:drawablePadding">5dp</item>
+        <item name="android:background">@drawable/edittext_field</item>
+    </style>
+
+    <style name="login_button_style">
+        <item name="android:textSize">@dimen/login_button_size</item>
+        <item name="android:textColor">@color/redColor</item>
+        <item name="android:background">@drawable/button_field</item>
+
+    </style>
+
+    <style name="forgot_pass">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/forgot_pass</item>
+    </style>
+
+    <style name="Register_toolbar">
+        <item name="android:background">@color/ToolbarColor</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.ActionBar</item>
+        <item name="android:popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="android:titleTextColor">@color/white</item>
+    </style>
+
+    <style name="Register_title_style">
+        <item name="android:textSize">@dimen/Register_logo</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Radio_button_style">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/no_account</item>
+
+    </style>
+
+
+</resources>
