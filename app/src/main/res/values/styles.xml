@@ -42,7 +42,7 @@
         <item name="android:background">@color/ToolbarColor</item>
         <item name="android:elevation">4dp</item>
         <item name="android:textSize">20dp</item>
-        <item name="android:theme">@style/ThemeOverlay.AppCompat.ActionBar</item>
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
         <item name="android:popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="android:titleTextColor">@color/white</item>
     </style>
@@ -56,6 +56,11 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/no_account</item>
 
+    </style>
+
+    <style name="navigation_header">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/terms_conditions</item>
     </style>
 
 

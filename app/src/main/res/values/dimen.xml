@@ -9,4 +9,5 @@
     <dimen name="Register_logo">20dp</dimen>
     <dimen name="drawable_padding">5dp</dimen>
     <dimen name="terms_conditions">13dp</dimen>
+
 </resources>

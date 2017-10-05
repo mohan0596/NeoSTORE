@@ -19,4 +19,20 @@
     <string name="i_agree">I agree the </string>
     <string name="terms_conditions">terms &amp; conditions</string>
 
+    <string name="My_cart">My cart</string>
+    <string name="Tables">Tables</string>
+    <string name="Sofas">Sofas</string>
+    <string name="Chairs">Chairs</string>
+    <string name="Cupboards">Cupboards</string>
+    <string name="My_account">My Account</string>
+    <string name="store_locator">Store Locator</string>
+    <string name="My_orders">My Orders</string>
+    <string name="Logout">Logout</string>
+
+    <string name="Drawer_open">Drawer open</string>
+    <string name="Drawer_closed">Drawer closed</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.root.neostore.R;
 import com.example.root.neostore.common.Base.BaseActivity;
+import com.example.root.neostore.view.home.HomeActivity;
 
 public class LoginActivity extends BaseActivity {
     private TextView loginheader,forgotpass,no_account;
@@ -38,6 +39,14 @@ public class LoginActivity extends BaseActivity {
         login.setTypeface(typeface1);
         forgotpass.setTypeface(typeface1);
         no_account.setTypeface(typeface1);
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 =new Intent(LoginActivity.this, HomeActivity.class);
+                startActivity(intent1);
+            }
+        });
 
         addAccount.setOnClickListener(new View.OnClickListener() {
             @Override
