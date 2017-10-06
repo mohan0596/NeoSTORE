@@ -6,7 +6,6 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowBackground">@color/redColor</item>
     </style>
 
     <style name="header_name">
@@ -61,6 +60,21 @@
     <style name="navigation_header">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/terms_conditions</item>
+    </style>
+
+    <style name="Product_name">
+        <item name="android:color">@color/gray</item>
+        <item name="android:textSize">@dimen/fifteen</item>
+    </style>
+
+    <style name="Product_details">
+        <item name="android:color">@color/gray</item>
+        <item name="android:textSize">@dimen/ten</item>
+    </style>
+
+    <style name="price">
+        <item name="android:color">@color/darkred</item>
+        <item name="android:textSize">@dimen/twenty</item>
     </style>
 
 

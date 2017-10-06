@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/product_list_height">
+    <ImageView
+        android:layout_width="@dimen/product_width"
+        android:layout_height="@dimen/product_height"
+        android:id="@+id/product_img_id"
+        android:scaleType="centerCrop"
+        android:src="@drawable/cupboardicon"
+        android:layout_marginTop="@dimen/terms_conditions"
+        android:layout_marginLeft="@dimen/terms_conditions"
+        />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/product_name_id"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginLeft="@dimen/fifteen"
+            style="@style/Product_name"
+            android:text="@string/Tables"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="@dimen/fifteen"
+            android:id="@+id/product_details_id"
+            android:text="@string/Tables"
+            style="@style/Product_details"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/seventeen"
+
+            android:orientation="horizontal"
+          >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/price_id"
+                android:text="@string/Tables"
+                android:layout_marginLeft="@dimen/fifteen"
+                android:textColor="@color/faint_red"
+                android:textSize="@dimen/twenty"
+                />
+            <RatingBar
+                android:layout_width="@dimen/sixty"
+                android:layout_height="@dimen/eleven"
+                android:id="@+id/rating_id"
+                style="@style/Base.Widget.AppCompat.RatingBar.Small"
+               />
+
+        </LinearLayout>
+        
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
