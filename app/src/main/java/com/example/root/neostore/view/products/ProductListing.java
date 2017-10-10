@@ -10,18 +10,16 @@ import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
 
 import com.example.root.neostore.R;
-import com.example.root.neostore.common.Base.CustomAdapter;
 
 import java.util.ArrayList;
 
 public class ProductListing extends AppCompatActivity {
     private Toolbar toolbar;
     private TextView toolbar_header;
-    private static int count=0;
 
     ArrayList<String> itemList=new ArrayList<>();
 
-    private CustomAdapter mAdapter;
+    private ProductListingAdapter mAdapter;
     private RecyclerView mNumberList;
 
     @Override
@@ -42,7 +40,7 @@ public class ProductListing extends AppCompatActivity {
         mNumberList.setLayoutManager(layoutManager);
         mNumberList.setHasFixedSize(true);
         mNumberList.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
-        mAdapter=new CustomAdapter(itemList);
+        mAdapter=new ProductListingAdapter(itemList);
         mNumberList.setAdapter(mAdapter);
 
     }
@@ -66,4 +64,6 @@ public class ProductListing extends AppCompatActivity {
         }
         return true;
     }
+
+
 }

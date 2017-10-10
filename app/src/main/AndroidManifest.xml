@@ -18,7 +18,9 @@
         </activity>
         <activity android:name=".view.login.Registration" />
         <activity android:name=".view.home.HomeActivity" />
-        <activity android:name=".view.products.ProductListing"></activity>
+        <activity android:name=".view.products.ProductListing" />
+        <activity android:name=".view.Address.AddAddressActivity" />
+        <activity android:name=".view.products.ProductDetailActivity"></activity>
     </application>
 
 </manifest>

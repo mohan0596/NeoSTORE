@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/faintGray"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.root.neostore.view.products.ProductDetailActivity">
+    <include layout="@layout/toolbar"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/product_name_id"
+            android:layout_marginTop="@dimen/twelve"
+            android:layout_marginLeft="@dimen/thirteen"
+            style="@style/product_heading"
+            android:text="@string/Tables"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="@dimen/thirteen"
+            android:id="@+id/product_category_id"
+            android:text="@string/Tables"
+            style="@style/product_category"/>
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+       >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="@dimen/thirteen"
+            android:id="@+id/product_details_id"
+            android:text="@string/Tables"
+            style="@style/product_description"/>
+        <RatingBar
+            android:id="@+id/rating_id"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:isIndicator="false"
+            android:layout_gravity="end"
+            android:numStars="5"
+            android:max="5"
+            android:progressTint="@color/yellow"
+            android:layout_marginEnd="35dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_marginTop="@dimen/thirteen"
+        android:layout_marginRight="@dimen/thirteen"
+        android:layout_marginLeft="@dimen/thirteen"
+      >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/thirteen"
+            android:layout_marginLeft="@dimen/thirteen"
+            android:layout_marginRight="@dimen/thirteen"
+            android:paddingLeft="@dimen/thirteen"
+
+            android:background="@color/white">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/price_id"
+                android:text="@string/price"
+                style="@style/price_style"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:src="@drawable/ic_share"
+                android:layout_marginEnd="29dp"
+                android:layout_alignBottom="@+id/price_id"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
+
+
+        <android.support.v4.view.ViewPager
+            android:layout_width="@dimen/pager_width"
+            android:layout_height="@dimen/pager_height"
+            android:id="@+id/pager_id"
+            android:layout_marginTop="5dp"
+           android:layout_gravity="center_horizontal">
+
+        </android.support.v4.view.ViewPager>
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:id="@+id/img_rv_id"
+            android:paddingLeft="10dp"
+
+            >
+
+        </android.support.v7.widget.RecyclerView>
+
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

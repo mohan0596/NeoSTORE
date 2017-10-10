@@ -1,11 +1,13 @@
-package com.example.root.neostore.common.Base;
+package com.example.root.neostore.view.products;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.root.neostore.R;
 
@@ -15,10 +17,10 @@ import java.util.ArrayList;
  * Created by root on 6/10/17.
  */
 
-public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ItemViewHolder> {
+public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAdapter.ItemViewHolder> {
     private int count=0;
     private ArrayList itemList;
-    public CustomAdapter(ArrayList<String> itemList) {
+    public ProductListingAdapter(ArrayList<String> itemList) {
         this.itemList=itemList;
     }
 
@@ -29,6 +31,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ItemViewHo
         int height= (int)(parent.getMeasuredHeight()/5.5);
         View view =inflater.inflate(R.layout.prodouct_list,null,false);
         view.setMinimumHeight(height);
+        view.setClickable(true);
         ItemViewHolder viewHolder=new ItemViewHolder(view);
         return viewHolder;
 
@@ -44,20 +47,37 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ItemViewHo
 
     @Override
     public int getItemCount() {
-        return itemList.size();
+        return 10;
     }
 
-     class ItemViewHolder extends RecyclerView.ViewHolder {
-        TextView ItemList;
+
+
+
+    class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        TextView Itemname;
 
         public ItemViewHolder(View itemView) {
             super(itemView);
-            ItemList=itemView.findViewById(R.id.product_name_id);
+            itemView.setOnClickListener(this);
+            Itemname=itemView.findViewById(R.id.product_name_id);
         }
 
 
          public void bind(int position) {
-            ItemList.setText(String.valueOf(itemList.get(getPosition())));
+            Itemname.setText("Position "+position);
          }
-     }
+
+        @Override
+        public void onClick(View view) {
+
+            Toast.makeText(view.getContext(),(getAdapterPosition()+1)+" OF "+10,Toast.LENGTH_SHORT).show();
+            Intent intent=new Intent(view.getContext(), ProductDetailActivity.class);
+            intent.putExtra("Data",  Itemname.getText().toString());
+            view.getContext().startActivity(intent);
+
+        }
+    }
+
+
+
 }

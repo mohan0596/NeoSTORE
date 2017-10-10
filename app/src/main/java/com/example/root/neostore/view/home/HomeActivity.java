@@ -1,6 +1,5 @@
 package com.example.root.neostore.view.home;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
@@ -11,16 +10,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.root.neostore.R;
 import com.example.root.neostore.common.Base.BaseActivity;
+import com.example.root.neostore.view.Address.AddAddressActivity;
 import com.example.root.neostore.view.products.ProductListing;
 
 import java.util.ArrayList;
@@ -58,7 +56,7 @@ public class HomeActivity extends BaseActivity implements HomeFragment.OnFragmen
             products.add(slider_images[i]);
         }
         viewPager=findViewById(R.id.pager_id);
-        pagerAdapter=new PageSlideAdapter(this, (ArrayList<Integer>) products);
+        pagerAdapter=new HomeBannerSliderAdapter(this, (ArrayList<Integer>) products);
         viewPager.setAdapter(pagerAdapter);
         circleIndicator();
         listeners();
@@ -166,7 +164,9 @@ public class HomeActivity extends BaseActivity implements HomeFragment.OnFragmen
                     case R.id.cupboard_id:
                         return true;
                     case R.id.my_account_id:
-                        return true;
+                      Intent intent=new Intent(HomeActivity.this, AddAddressActivity.class);
+                      startActivity(intent);
+                      break;
                     case R.id.store_locators_id:
                         return true;
                     case R.id.my_orders_id:
@@ -209,47 +209,8 @@ public class HomeActivity extends BaseActivity implements HomeFragment.OnFragmen
 
     }
 
-    private class PageSlideAdapter extends PagerAdapter {
-        Context context;
-        private List<Integer> products=new ArrayList<>();
-        private LayoutInflater inflater;
-
-
-        public PageSlideAdapter(Context context,ArrayList<Integer> products)
-        {
-            this.context=context;
-            this.products=products;
-            inflater=LayoutInflater.from(context);
-        }
-
-        @Override
-        public int getCount() {
-            return products.size();
-        }
-
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            container.removeView((View) object);
-        }
-
-        @Override
-        public boolean isViewFromObject(View view, Object object) {
-            return view.equals(object);
-        }
-
-        @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            View myView=inflater.inflate(R.layout.fragment_home,container,false);
-            ImageView myImage=myView.findViewById(R.id.pager_image_id);
-            myImage.setImageResource(products.get(position));
-            container.addView(myView,0);
-            return myView;
-        }
-    }
-
-    @Override
-    public void onBackPressed() {
-        moveTaskToBack(true);
 
     }
-}
+
+   
+

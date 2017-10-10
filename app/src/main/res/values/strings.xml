@@ -32,6 +32,16 @@
     <string name="Drawer_open">Drawer open</string>
     <string name="Drawer_closed">Drawer closed</string>
 
+    <string name="Address">Address</string>
+    <string name="Add_Address">Add Address</string>
+    <string name="City">City</string>
+    <string name="State">State</string>
+    <string name="Zip_code">Zip Code</string>
+    <string name="Country">Country</string>
+    <string name="Save_address">Save Address</string>
+
+    <string name="price">Rs. 27,390</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
