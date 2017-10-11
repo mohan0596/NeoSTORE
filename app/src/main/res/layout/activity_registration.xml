@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/redColor"
-    tools:context="com.example.root.neostore.view.login.Registration">
+    tools:context="com.example.root.neostore.view.login.Activity.RegistrationActivity">
 
     <include layout="@layout/toolbar"/>
 

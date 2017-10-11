@@ -12,24 +12,18 @@ import com.example.root.neostore.R;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by root on 9/10/17.
- */
 
 public class HomeBannerSliderAdapter extends PagerAdapter {
-    Context context;
-    private List<Integer> products = new ArrayList<>();
     private LayoutInflater inflater;
 
 
-    public HomeBannerSliderAdapter(Context context, ArrayList<Integer> products) {
-        this.products = products;
+    public HomeBannerSliderAdapter(Context context) {
         inflater = LayoutInflater.from(context);
     }
 
     @Override
     public int getCount() {
-        return products.size();
+        return 4;
     }
 
     @Override
@@ -46,7 +40,7 @@ public class HomeBannerSliderAdapter extends PagerAdapter {
     public Object instantiateItem(ViewGroup container, int position) {
         View myView = inflater.inflate(R.layout.fragment_home, container, false);
         ImageView myImage = myView.findViewById(R.id.pager_image_id);
-        myImage.setImageResource(products.get(position));
+        myImage.setImageResource(R.drawable.slider_img1);
         container.addView(myView, 0);
         return myView;
     }

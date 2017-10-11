@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.root.neostore.view.Address.AddressListActivity">
+
+    <include layout="@layout/toolbar"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/twelve"
+        android:layout_marginLeft="@dimen/twelve"
+        android:layout_marginRight="@dimen/twelve"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/shipping_add_header_id"
+            android:text="@string/shipping_address"
+            style="@style/Shipping_header"
+            android:layout_marginBottom="@dimen/twelve"
+            />
+        <include layout="@layout/recyclerview"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/place_order_id"
+            android:layout_marginTop="@dimen/thirty"
+            android:text="@string/place_order"
+            style="@style/save_address"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

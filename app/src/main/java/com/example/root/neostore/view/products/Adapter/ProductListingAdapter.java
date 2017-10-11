@@ -1,4 +1,4 @@
-package com.example.root.neostore.view.products;
+package com.example.root.neostore.view.products.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,27 +10,25 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.root.neostore.R;
-
-import java.util.ArrayList;
+import com.example.root.neostore.view.products.Activity.ProductDetailActivity;
 
 /**
  * Created by root on 6/10/17.
  */
 
 public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAdapter.ItemViewHolder> {
-    private int count=0;
-    private ArrayList itemList;
-    public ProductListingAdapter(ArrayList<String> itemList) {
-        this.itemList=itemList;
+
+    private  Context context;
+
+    public ProductListingAdapter(Context context) {
+        this.context=context;
     }
 
     @Override
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context=parent.getContext();
         LayoutInflater inflater=LayoutInflater.from(context);
-        int height= (int)(parent.getMeasuredHeight()/5.5);
         View view =inflater.inflate(R.layout.prodouct_list,null,false);
-        view.setMinimumHeight(height);
         view.setClickable(true);
         ItemViewHolder viewHolder=new ItemViewHolder(view);
         return viewHolder;

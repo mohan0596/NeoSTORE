@@ -1,4 +1,4 @@
-package com.example.root.neostore.view.products;
+package com.example.root.neostore.view.products.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -18,8 +18,9 @@ import java.util.List;
 public class ProductDetailsAdapter extends RecyclerView.Adapter<ProductDetailsAdapter.ItemViewHolder> {
     private int count=0;
     private List products;
-    public ProductDetailsAdapter(List<Integer> products) {
-        this.products=products;
+    Context context;
+    public ProductDetailsAdapter(Context context) {
+        this.context=context;
 
     }
 
@@ -39,7 +40,7 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<ProductDetailsAd
 
     @Override
     public void onBindViewHolder(ProductDetailsAdapter.ItemViewHolder holder, int position) {
-        holder.bind(position);
+        holder.bind();
 
     }
 
@@ -47,7 +48,7 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<ProductDetailsAd
 
     @Override
     public int getItemCount() {
-        return products.size();
+        return 4;
     }
 
 
@@ -61,8 +62,8 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<ProductDetailsAd
         }
 
 
-        public void bind(int position) {
-            product_img.setImageResource((Integer) products.get(getAdapterPosition()));
+        public void bind() {
+            product_img.setImageResource(R.drawable.slider_img1);
         }
 
         @Override

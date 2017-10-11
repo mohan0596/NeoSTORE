@@ -42,6 +42,14 @@
 
     <string name="price">Rs. 27,390</string>
 
+    <string name="Description">Description</string>
+
+    <string name="buy_now">BUY NOW</string>
+    <string name="Rate">RATE</string>
+
+    <string name="shipping_address">Shipping Address</string>
+    <string name="place_order">PLACE ORDER</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

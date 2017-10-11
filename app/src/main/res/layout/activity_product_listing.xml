@@ -6,13 +6,9 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context="com.example.root.neostore.view.products.ProductListing">
+    tools:context="com.example.root.neostore.view.products.Activity.ProductListingActivity">
     <include layout="@layout/toolbar"/>
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyleview_id"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <include layout="@layout/recyclerview"/>
 
-    </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

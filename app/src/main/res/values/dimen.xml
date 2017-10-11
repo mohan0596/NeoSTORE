@@ -21,6 +21,7 @@
     <dimen name="twenty_five">25dp</dimen>
     <dimen name="sixteen">16dp</dimen>
     <dimen name="twelve">12dp</dimen>
+    <dimen name="twenty_two">22dp</dimen>
 
     <dimen name="product_width">83dp</dimen>
     <dimen name="product_height">77dp</dimen>

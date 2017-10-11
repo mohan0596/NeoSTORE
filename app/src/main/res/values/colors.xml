@@ -16,4 +16,6 @@
     <color name="faintGray">#ededed</color>
     <color name="dark_black">#262626</color>
     <color name="light_black">#4f4f4f</color>
+    <color name="description_black">#111111</color>
+    <color name="rate_gray">#bfbfbf</color>
 </resources>

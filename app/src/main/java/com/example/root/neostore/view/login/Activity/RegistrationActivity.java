@@ -1,4 +1,4 @@
-package com.example.root.neostore.view.login;
+package com.example.root.neostore.view.login.Activity;
 
 import android.app.Activity;
 import android.graphics.Paint;
@@ -14,7 +14,7 @@ import android.support.v7.widget.Toolbar;
 import com.example.root.neostore.R;
 import com.example.root.neostore.common.Base.BaseActivity;
 
-public class Registration extends BaseActivity {
+public class RegistrationActivity extends BaseActivity {
     private TextView textView;
     private TextView loginheader,terms_conditions,gender,male,female,agree,terms;
     private EditText firstname,lastname,password,email,confirm_password,phone;
@@ -22,19 +22,23 @@ public class Registration extends BaseActivity {
     Toolbar toolbar;
 
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration);
-        Typeface typeface=Typeface.createFromAsset(getAssets(),"fonts/gotham-bold-59d33bd309880.otf");
-        Typeface typeface1=Typeface.createFromAsset(getAssets(),"fonts/gotham-medium-59d33c9cb58a0.otf");
-        initView(typeface,typeface1);
-        textView.setPaintFlags(textView.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
-
-
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:onBackPressed();
+            break;
+        }
+        return true;
     }
 
-    private void initView(Typeface typeface, Typeface typeface1) {
+    @Override
+    public int getContentView() {
+        return 0;
+    }
+
+    @Override
+    public void initView() {
         textView=findViewById(R.id.conditions_id);
         toolbar=findViewById(R.id.my_toolbar);
 
@@ -51,35 +55,26 @@ public class Registration extends BaseActivity {
         Register=findViewById(R.id.register_id);
         agree=findViewById(R.id.terms_conditions_id);
         terms=findViewById(R.id.conditions_id);
+        textView.setPaintFlags(textView.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
 
-        loginheader.setTypeface(typeface);
-        firstname.setTypeface(typeface1);
-        lastname.setTypeface(typeface1);
-        password.setTypeface(typeface1);
-        confirm_password.setTypeface(typeface1);
-        email.setTypeface(typeface1);
-        gender.setTypeface(typeface1);
-        male.setTypeface(typeface1);
-        female.setTypeface(typeface1);
-        phone.setTypeface(typeface1);
-        Register.setTypeface(typeface1);
-        agree.setTypeface(typeface1);
-        terms.setTypeface(typeface1);
+    }
 
+    @Override
+    public void setListeners() {
+
+    }
+
+    @Override
+    public void setActionBar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_left);
 
-
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home:onBackPressed();
-            break;
-        }
-        return true;
+    public void setAdapter() {
+
     }
 }
