@@ -1,5 +1,6 @@
 package com.example.root.neostore.view.products.Activity;
 
+import android.support.v4.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
@@ -10,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,13 +19,15 @@ import com.example.root.neostore.R;
 import com.example.root.neostore.common.Base.BaseActivity;
 import com.example.root.neostore.view.home.HomeBannerSliderAdapter;
 import com.example.root.neostore.view.products.Adapter.ProductDetailsAdapter;
+import com.example.root.neostore.view.products.Fragment.EnterQuantityFragment;
+import com.example.root.neostore.view.products.Fragment.RatingPopupFragment;
 
 public class ProductDetailActivity extends BaseActivity implements ViewPager.OnPageChangeListener, View.OnClickListener {
     private Toolbar toolbar;
     private TextView title;
     private PagerAdapter pagerAdapter;
     private ImageView Share;
-
+    private Button buyNow,rateProduct;
 
     private ViewPager viewPager;
     private RecyclerView recyclerView;
@@ -76,12 +80,15 @@ public class ProductDetailActivity extends BaseActivity implements ViewPager.OnP
         viewPager=findViewById(R.id.pager_id);
         recyclerView=findViewById(R.id.recyclerview_id);
         Share=findViewById(R.id.share_id);
+        buyNow=findViewById(R.id.buy_now_id);
+        rateProduct=findViewById(R.id.Rate_button_id);
     }
 
     @Override
     public void setListeners() {
         Share.setOnClickListener(this);
-
+        buyNow.setOnClickListener(this);
+        rateProduct.setOnClickListener(this);
     }
 
     @Override
@@ -111,11 +118,29 @@ public class ProductDetailActivity extends BaseActivity implements ViewPager.OnP
 
     @Override
     public void onClick(View view) {
-        Intent intent=new Intent(Intent.ACTION_SEND);
-        intent.setType("text/plain");
-        //  intent.putExtra(intent.EXTRA_TEXT,"");
-        Intent chooser=Intent.createChooser(intent,"Share");
-        if(intent.resolveActivity(getPackageManager())!=null)
-            startActivity(chooser);
+        Intent intent;
+        switch (view.getId()){
+            case R.id.share_id:
+                 intent=new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                //  intent.putExtra(intent.EXTRA_TEXT,"");
+                Intent chooser=Intent.createChooser(intent,"Share");
+                if(intent.resolveActivity(getPackageManager())!=null)
+                    startActivity(chooser);
+                break;
+
+            case R.id.buy_now_id:
+                DialogFragment dialogFragment=new EnterQuantityFragment();
+                dialogFragment.show(getSupportFragmentManager(),"buy_product");
+                break;
+
+            case R.id.Rate_button_id:
+                DialogFragment dialogFragment1=new RatingPopupFragment();
+                dialogFragment1.show(getSupportFragmentManager(),"Rate_product");
+                break;
+
+
+        }
+
     }
 }

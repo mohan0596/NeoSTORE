@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/product_category_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        style="@style/quantity_product_header"
+        android:text="@string/Tables" />
+
+    <ImageView
+        android:id="@+id/product_img_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/product_category_id"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="33dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/slider_img2" />
+
+    <RatingBar
+        android:id="@+id/ratingBar_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:numStars="5"
+        android:progressTint="@color/yellow"
+        android:stepSize="1"
+        android:isIndicator="false"
+        android:layout_below="@+id/product_img_id"
+        android:layout_centerHorizontal="true" />
+
+
+    <Button
+        android:id="@+id/rate_now_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ratingBar_id"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/twenty_two"
+        android:layout_marginBottom="33dp"
+        style="@style/submitt"
+        android:text="@string/rate_now" />
+
+</RelativeLayout>

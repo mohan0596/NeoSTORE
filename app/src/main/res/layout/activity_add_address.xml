@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@color/faintGray"
     android:fitsSystemWindows="true"
-    tools:context="com.example.root.neostore.view.Address.AddAddressActivity">
+    tools:context="com.example.root.neostore.view.Address.Activity.AddAddressActivity">
 
     <include layout="@layout/toolbar"
         />

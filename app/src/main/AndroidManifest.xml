@@ -21,9 +21,11 @@
         <activity android:name=".view.login.Activity.RegistrationActivity" />
         <activity android:name=".view.home.HomeActivity" />
         <activity android:name=".view.products.Activity.ProductListingActivity" />
-        <activity android:name=".view.Address.AddAddressActivity" />
+        <activity android:name=".view.Address.Activity.AddAddressActivity" />
         <activity android:name=".view.products.Activity.ProductDetailActivity" />
-        <activity android:name=".view.Address.AddressListActivity"></activity>
+        <activity android:name=".view.Address.Activity.AddressListActivity" />
+        <activity android:name=".view.Orders.Activity.MyOrdersActivity" />
+        <activity android:name=".view.Orders.Activity.OrderIdActivity"></activity>
     </application>
 
 </manifest>

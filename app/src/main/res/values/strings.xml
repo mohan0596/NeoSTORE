@@ -27,6 +27,7 @@
     <string name="My_account">My Account</string>
     <string name="store_locator">Store Locator</string>
     <string name="My_orders">My Orders</string>
+    <string name="My_addess">My Address</string>
     <string name="Logout">Logout</string>
 
     <string name="Drawer_open">Drawer open</string>
@@ -49,6 +50,12 @@
 
     <string name="shipping_address">Shipping Address</string>
     <string name="place_order">PLACE ORDER</string>
+    <string name="Address_List">Address List</string>
+    <string name="submitt">Submit</string>
+    <string name="rate_now">Rate Now</string>
+    <string name="order_id">ORDER ID:</string>
+    <string name="order_date">Ordered Date:</string>
+    <string name="total">Total</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

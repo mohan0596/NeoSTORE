@@ -64,6 +64,13 @@
         android:icon="@drawable/myorders_icon"
         />
     </group>
+    <group android:id="@+id/section10">
+        <item
+            android:id="@+id/my_address_id"
+            android:title="@string/My_addess"
+            android:icon="@drawable/myorders_icon"
+            />
+    </group>
 
     <group android:id="@+id/section9">
     <item

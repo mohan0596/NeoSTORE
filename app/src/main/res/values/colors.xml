@@ -18,4 +18,7 @@
     <color name="light_black">#4f4f4f</color>
     <color name="description_black">#111111</color>
     <color name="rate_gray">#bfbfbf</color>
+    <color name="radio_gray">#8e8e8e</color>
+    <color name="order_black">#1c1c1c</color>
+    <color name="faint_black">#6b6b6b</color>
 </resources>

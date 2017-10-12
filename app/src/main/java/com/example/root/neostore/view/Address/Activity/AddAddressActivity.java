@@ -1,4 +1,4 @@
-package com.example.root.neostore.view.Address;
+package com.example.root.neostore.view.Address.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

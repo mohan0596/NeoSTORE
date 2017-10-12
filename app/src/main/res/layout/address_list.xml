@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/twenty"
+    android:layout_marginLeft="@dimen/twelve"
+    android:fitsSystemWindows="true">
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/radio_button_id"
+        android:button="@drawable/address_radio_state"
+        android:layout_marginBottom="@dimen/fifteen"
+        android:layout_marginTop="@dimen/fifteen"
+        android:layout_gravity="center">
+
+    </RadioButton>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/twelve"
+        android:paddingBottom="@dimen/twelve"
+        android:background="@drawable/address_detail_field"
+        android:layout_marginLeft="@dimen/twelve">
+
+        <TextView
+            android:id="@+id/name_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Address"
+            style="@style/Address_name"
+            android:layout_marginTop="5dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/address_detail_id"
+            android:layout_below="@+id/name_id"
+            android:text="@string/Address"
+            style="@style/Address_detail"
+            android:layout_marginTop="5dp"
+            />
+
+        <ImageView
+            android:id="@+id/cross_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_cross"
+            android:layout_alignTop="@+id/name_id"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="5dp"
+         />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_pencil_id"
+            android:layout_marginRight="5dp"
+            app:srcCompat="@drawable/ic_edit"
+            android:layout_below="@+id/address_detail_id"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="5dp"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

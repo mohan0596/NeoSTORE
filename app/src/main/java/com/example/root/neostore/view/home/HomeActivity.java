@@ -1,7 +1,6 @@
 package com.example.root.neostore.view.home;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -9,10 +8,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,7 +17,9 @@ import android.widget.TextView;
 
 import com.example.root.neostore.R;
 import com.example.root.neostore.common.Base.BaseActivity;
-import com.example.root.neostore.view.Address.AddAddressActivity;
+import com.example.root.neostore.view.Address.Activity.AddAddressActivity;
+import com.example.root.neostore.view.Address.Activity.AddressListActivity;
+import com.example.root.neostore.view.Orders.Activity.MyOrdersActivity;
 import com.example.root.neostore.view.products.Activity.ProductListingActivity;
 
 import java.util.Timer;
@@ -179,11 +177,13 @@ public class HomeActivity extends BaseActivity implements  NavigationView.OnNavi
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Intent intent;
         item.setChecked(true);
         mDrawerlayout.closeDrawers();
         switch (item.getItemId()) {
             case R.id.cart_id:
                 return true;
+
             case R.id.table_id:
                 return true;
             case R.id.sofa_id:
@@ -193,13 +193,22 @@ public class HomeActivity extends BaseActivity implements  NavigationView.OnNavi
             case R.id.cupboard_id:
                 return true;
             case R.id.my_account_id:
-                Intent intent = new Intent(HomeActivity.this, AddAddressActivity.class);
+                 intent = new Intent(HomeActivity.this, AddAddressActivity.class);
                 startActivity(intent);
                 break;
             case R.id.store_locators_id:
                 return true;
             case R.id.my_orders_id:
+                intent=new Intent(HomeActivity.this, MyOrdersActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.my_address_id:
+                intent =new Intent(HomeActivity.this, AddressListActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.logout_id:
                 return true;
+
         }
         return true;
 
