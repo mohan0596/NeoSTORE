@@ -21,6 +21,9 @@ import com.example.root.neostore.view.Address.Activity.AddAddressActivity;
 import com.example.root.neostore.view.Address.Activity.AddressListActivity;
 import com.example.root.neostore.view.Cart.MyCartActivity;
 import com.example.root.neostore.view.Orders.Activity.MyOrdersActivity;
+import com.example.root.neostore.view.login.Activity.ResetPassword;
+import com.example.root.neostore.view.myProfile.MyAccountActivity;
+import com.example.root.neostore.view.products.Activity.ProductDetailActivity;
 import com.example.root.neostore.view.products.Activity.ProductListingActivity;
 
 import java.util.Timer;
@@ -188,15 +191,27 @@ public class HomeActivity extends BaseActivity implements  NavigationView.OnNavi
                 break;
 
             case R.id.table_id:
-                return true;
+                intent=new Intent(HomeActivity.this, ProductListingActivity.class);
+                intent.putExtra("title", "Tables");
+                startActivity(intent);
+                break;
             case R.id.sofa_id:
-                return true;
+                intent=new Intent(HomeActivity.this, ProductListingActivity.class);
+                intent.putExtra("title", "Sofas");
+                startActivity(intent);
+                break;
             case R.id.chair_id:
-                return true;
+                intent=new Intent(HomeActivity.this, ProductListingActivity.class);
+                intent.putExtra("title", "Chairs");
+                startActivity(intent);
+                break;
             case R.id.cupboard_id:
-                return true;
+                intent=new Intent(HomeActivity.this, ProductListingActivity.class);
+                intent.putExtra("title", "Cupboard");
+                startActivity(intent);
+                break;
             case R.id.my_account_id:
-                 intent = new Intent(HomeActivity.this, AddAddressActivity.class);
+                 intent = new Intent(HomeActivity.this, MyAccountActivity.class);
                 startActivity(intent);
                 break;
             case R.id.store_locators_id:
@@ -210,6 +225,8 @@ public class HomeActivity extends BaseActivity implements  NavigationView.OnNavi
                 startActivity(intent);
                 break;
             case R.id.logout_id:
+                intent =new Intent(HomeActivity.this, ResetPassword.class);
+                startActivity(intent);
                 return true;
 
         }

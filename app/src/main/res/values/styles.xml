@@ -191,6 +191,12 @@
     <item name="android:textSize">@dimen/thirteen</item>
     </style>
 
+    <style name="reset_pass">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/seventeen</item>
+        <item name="android:background">@drawable/reset_pass_field</item>
+    </style>
+
 
 
 

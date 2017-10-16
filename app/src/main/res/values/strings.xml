@@ -57,6 +57,13 @@
     <string name="order_date">Ordered Date:</string>
     <string name="total">Total</string>
     <string name="order_now">Order Now</string>
+    <string name="current_pass">Current Password</string>
+    <string name="new_pass">New Password</string>
+    <string name="confirm_pass">Confirm Password</string>
+    <string name="reset_pass">RESET PASSWORD</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="edit_profile">EDIT PROFILE</string>
+    <string name="dob">Date Of Birth</string>
 
     <string-array name="quantity">
         <item>1</item>

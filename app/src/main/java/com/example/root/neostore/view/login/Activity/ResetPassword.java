@@ -1,48 +1,45 @@
-package com.example.root.neostore.view.Address.Activity;
+package com.example.root.neostore.view.login.Activity;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import com.example.root.neostore.R;
 import com.example.root.neostore.common.Base.BaseActivity;
-import com.example.root.neostore.view.Address.Adapter.AddressListAdapter;
 
-public class AddressListActivity extends BaseActivity {
-    Toolbar toolbar;
-    TextView title;
-    private RecyclerView recyclerView;
-    AddressListAdapter mAdapter;
-
+public class ResetPassword extends BaseActivity implements View.OnClickListener {
+    private TextView title;
+    private Toolbar toolbar;
+    private Button reset_password;
 
 
     @Override
     protected int getContentView() {
-        return R.layout.activity_address_list;
+        return R.layout.activity_reset_password;
     }
 
     @Override
     protected void initView() {
         toolbar=findViewById(R.id.my_toolbar);
         title=toolbar.findViewById(R.id.title);
-        title.setText(R.string.Address_List);
-        recyclerView=findViewById(R.id.recyclerview_id);
-
-
+        reset_password=findViewById(R.id.reset_pass_id);
     }
 
     @Override
     protected void setListeners() {
+        reset_password.setOnClickListener(this);
 
     }
 
     @Override
     protected void setActionBar() {
-        title.setText(R.string.Address_List);
+        title.setText(R.string.reset_password);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_left);
 
@@ -50,12 +47,12 @@ public class AddressListActivity extends BaseActivity {
 
     @Override
     protected void setAdapter() {
-        LinearLayoutManager layoutManager=new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setHasFixedSize(true);
-        mAdapter=new AddressListAdapter(this);
-        recyclerView.setAdapter(mAdapter);
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        Toast.makeText(this, "Password Changed", Toast.LENGTH_SHORT).show();
     }
 
     @Override
