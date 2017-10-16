@@ -19,6 +19,7 @@ import com.example.root.neostore.R;
 import com.example.root.neostore.common.Base.BaseActivity;
 import com.example.root.neostore.view.Address.Activity.AddAddressActivity;
 import com.example.root.neostore.view.Address.Activity.AddressListActivity;
+import com.example.root.neostore.view.Cart.MyCartActivity;
 import com.example.root.neostore.view.Orders.Activity.MyOrdersActivity;
 import com.example.root.neostore.view.products.Activity.ProductListingActivity;
 
@@ -182,7 +183,9 @@ public class HomeActivity extends BaseActivity implements  NavigationView.OnNavi
         mDrawerlayout.closeDrawers();
         switch (item.getItemId()) {
             case R.id.cart_id:
-                return true;
+                intent=new Intent(HomeActivity.this, MyCartActivity.class);
+                startActivity(intent);
+                break;
 
             case R.id.table_id:
                 return true;

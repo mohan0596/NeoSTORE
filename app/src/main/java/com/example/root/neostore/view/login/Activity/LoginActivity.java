@@ -42,6 +42,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     public void setListeners() {
         login.setOnClickListener(this);
         addAccount.setOnClickListener(this);
+        forgotpass.setOnClickListener(this);
 
     }
 
@@ -66,6 +67,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
             case R.id.plus_id:
                 intent=new Intent(LoginActivity.this,RegistrationActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.forgotpass_id:
+                intent=new Intent(LoginActivity.this,ForgotPasswordActivity.class);
                 startActivity(intent);
                 break;
         }

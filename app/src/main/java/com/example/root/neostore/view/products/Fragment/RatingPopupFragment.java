@@ -20,25 +20,25 @@ import com.example.root.neostore.R;
 public class RatingPopupFragment extends DialogFragment implements View.OnClickListener {
     private Button Rate;
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view= inflater.inflate(R.layout.rating_popup,null,false);
-        Rate=view.findViewById(R.id.rate_now_id);
-        Rate.setOnClickListener(this);
-        return view;
-    }
+
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
+
         LayoutInflater inflater=getActivity().getLayoutInflater();
-        builder.setView(inflater.inflate(R.layout.rating_popup,null));
+        View view= inflater.inflate(R.layout.rating_popup,null,false);
+
+        Rate=view.findViewById(R.id.rate_now_id);
+        Rate.setOnClickListener(this);
+        builder.setView(view);
         return builder.create();
     }
 
 
     @Override
     public void onClick(View view) {
+        Toast.makeText(getActivity(),"rate",Toast.LENGTH_SHORT).show();
 
     }
 }

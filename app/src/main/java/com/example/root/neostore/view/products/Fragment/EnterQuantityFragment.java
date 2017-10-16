@@ -19,21 +19,18 @@ import com.example.root.neostore.view.products.Activity.ProductDetailActivity;
  */
 
 public class EnterQuantityFragment extends DialogFragment implements View.OnClickListener {
-    private Button submit;
+    private Button btnsubmit;
 
-    @Override
-    public View onCreateView(LayoutInflater inflater,  ViewGroup container, Bundle savedInstanceState) {
-        View view= inflater.inflate(R.layout.enter_quantity,null,false);
-        submit=view.findViewById(R.id.submit_id);
-        submit.setOnClickListener(this);
-        return view;
-    }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
+
         LayoutInflater inflater=getActivity().getLayoutInflater();
-        builder.setView(inflater.inflate(R.layout.enter_quantity,null));
+        View view=inflater.inflate(R.layout.enter_quantity,null);
+        btnsubmit=view.findViewById(R.id.submit_id);
+        btnsubmit.setOnClickListener(this);
+        builder.setView(view);
         return builder.create();
     }
 
