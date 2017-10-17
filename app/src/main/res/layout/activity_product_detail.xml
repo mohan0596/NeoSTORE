@@ -153,6 +153,8 @@
                 android:weightSum="2"
                 android:orientation="horizontal"
                 android:layout_marginTop="@dimen/ten"
+                android:paddingBottom="@dimen/ten"
+                android:layout_marginBottom="@dimen/ten"
                 android:background="@color/white"
                 android:layout_marginRight="@dimen/thirteen"
                 android:layout_marginLeft="@dimen/thirteen">

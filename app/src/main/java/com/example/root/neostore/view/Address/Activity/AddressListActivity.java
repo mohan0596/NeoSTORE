@@ -1,8 +1,12 @@
 package com.example.root.neostore.view.Address.Activity;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
 
@@ -10,9 +14,10 @@ import com.example.root.neostore.R;
 import com.example.root.neostore.common.Base.BaseActivity;
 import com.example.root.neostore.view.Address.Adapter.AddressListAdapter;
 
-public class AddressListActivity extends BaseActivity {
+public class AddressListActivity extends BaseActivity implements View.OnClickListener {
     Toolbar toolbar;
     TextView title;
+    private Button btnPlaceorder;
     private RecyclerView recyclerView;
     AddressListAdapter mAdapter;
 
@@ -29,12 +34,15 @@ public class AddressListActivity extends BaseActivity {
         title=toolbar.findViewById(R.id.title);
         title.setText(R.string.Address_List);
         recyclerView=findViewById(R.id.recyclerview_id);
+        btnPlaceorder=findViewById(R.id.place_order_id);
 
 
     }
 
     @Override
     protected void setListeners() {
+        btnPlaceorder.setOnClickListener(this);
+
 
     }
 
@@ -65,5 +73,11 @@ public class AddressListActivity extends BaseActivity {
                 break;
         }
         return true;
+    }
+
+    @Override
+    public void onClick(View view) {
+        Intent i=new Intent(this,AddAddressActivity.class);
+        startActivity(i);
     }
 }

@@ -35,6 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/place_order_id"
+            android:layout_marginBottom="@dimen/ten"
             android:layout_marginTop="@dimen/thirty"
             android:text="@string/place_order"
             style="@style/save_address"/>
