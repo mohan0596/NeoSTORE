@@ -1,6 +1,8 @@
 package com.example.root.neostore.view.home;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -21,6 +23,7 @@ import com.example.root.neostore.view.Address.Activity.AddAddressActivity;
 import com.example.root.neostore.view.Address.Activity.AddressListActivity;
 import com.example.root.neostore.view.Cart.MyCartActivity;
 import com.example.root.neostore.view.Orders.Activity.MyOrdersActivity;
+import com.example.root.neostore.view.login.Activity.LoginActivity;
 import com.example.root.neostore.view.login.Activity.ResetPassword;
 import com.example.root.neostore.view.myProfile.MyAccountActivity;
 import com.example.root.neostore.view.products.Activity.ProductDetailActivity;
@@ -225,10 +228,12 @@ public class HomeActivity extends BaseActivity implements  NavigationView.OnNavi
                 startActivity(intent);
                 break;
             case R.id.logout_id:
-                intent =new Intent(HomeActivity.this, ResetPassword.class);
+                SharedPreferences preferences =getApplicationContext().getSharedPreferences("loginkey", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.clear().apply();
+                intent=new Intent(HomeActivity.this,LoginActivity.class);
                 startActivity(intent);
-                return true;
-
+                finish();
         }
         return true;
 

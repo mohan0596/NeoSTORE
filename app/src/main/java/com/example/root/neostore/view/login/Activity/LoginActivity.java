@@ -1,8 +1,11 @@
 package com.example.root.neostore.view.login.Activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,6 +39,15 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         login=findViewById(R.id.login_id);
         addAccount=findViewById(R.id.plus_id);
 
+        SharedPreferences sharedPreferences=getApplicationContext().getSharedPreferences("loginkey", Context.MODE_PRIVATE);
+
+        if (sharedPreferences.contains("usr_name")) {
+
+            Intent intent=new Intent(LoginActivity.this,HomeActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
     }
 
     @Override
@@ -61,8 +73,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         Intent intent;
         switch (view.getId()){
             case R.id.login_id:
-                 intent =new Intent(LoginActivity.this, HomeActivity.class);
-                startActivity(intent);
+                validate();
+
                 break;
 
             case R.id.plus_id:
@@ -76,4 +88,30 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 break;
         }
     }
-}
+
+    private void validate() {
+        if(username.getText().toString().equals("")  ){
+            username.setError("Username is required");
+
+        }
+        else  if(password.getText().toString().equals("")){
+            password.setError("Password is required");
+        }
+        else {
+            SharedPreferences sharedPreferences=getApplicationContext().getSharedPreferences("loginkey", Context.MODE_PRIVATE);
+
+            Intent i=new Intent(LoginActivity.this,HomeActivity.class);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("usr_name", String.valueOf(username.getText()));
+            editor.putString("password", String.valueOf(password.getText()));
+            editor.commit();
+            startActivity(i);
+            finish();
+
+             }
+            }
+        }
+
+
+
+
