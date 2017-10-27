@@ -3,6 +3,7 @@ package com.example.root.neostore.view.home;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -11,9 +12,11 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,11 +27,13 @@ import com.example.root.neostore.view.Address.Activity.AddressListActivity;
 import com.example.root.neostore.view.Cart.MyCartActivity;
 import com.example.root.neostore.view.Orders.Activity.MyOrdersActivity;
 import com.example.root.neostore.view.login.Activity.LoginActivity;
-import com.example.root.neostore.view.login.Activity.ResetPassword;
 import com.example.root.neostore.view.myProfile.MyAccountActivity;
 import com.example.root.neostore.view.products.Activity.ProductDetailActivity;
+import com.example.root.neostore.view.products.Activity.ProductListWebRequest;
 import com.example.root.neostore.view.products.Activity.ProductListingActivity;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -41,13 +46,11 @@ public class HomeActivity extends BaseActivity implements  NavigationView.OnNavi
     private TextView title;
     private ViewPager viewPager;
     private PagerAdapter pagerAdapter;
-    private ImageView tables, chairs, sofas, cupboards;
+    private ImageView tables, chairs, sofas, cupboards,profilepic;
+    private TextView username,emailId;
+    View headerView;
 
     private static int currentPage = 0;
-
-
-
-
 
 
 
@@ -120,6 +123,15 @@ public class HomeActivity extends BaseActivity implements  NavigationView.OnNavi
         navigationView = findViewById(R.id.navigation_id);
         viewPager = findViewById(R.id.pager_id);
 
+        headerView = navigationView.getHeaderView(0);
+        username=headerView.findViewById(R.id.username_id);
+        emailId=headerView.findViewById(R.id.profile_email_id);
+        SharedPreferences sharedPreferences=getApplicationContext().getSharedPreferences("loginkey",Context.MODE_PRIVATE);
+
+        username.setText(sharedPreferences.getString("usr_name",""));
+        emailId.setText(sharedPreferences.getString("email",""));
+
+
 
     }
 
@@ -153,29 +165,35 @@ public class HomeActivity extends BaseActivity implements  NavigationView.OnNavi
 
     @Override
     public void onClick(View view) {
+
         Intent intent;
         switch (view.getId()){
             case R.id.table_id:
-                 intent = new Intent(HomeActivity.this, ProductListingActivity.class);
+                intent = new Intent(HomeActivity.this, ProductListingActivity.class);
                 intent.putExtra("title", "Tables");
+                intent.putExtra("product_category_id","1");
                 startActivity(intent);
                 break;
+
 
             case R.id.chair_id:
                 intent = new Intent(HomeActivity.this, ProductListingActivity.class);
                 intent.putExtra("title", "Chairs");
+                intent.putExtra("product_category_id","2");
                 startActivity(intent);
                 break;
 
             case R.id.sofa_id:
                  intent = new Intent(HomeActivity.this, ProductListingActivity.class);
                 intent.putExtra("title", "Sofas");
+                intent.putExtra("product_category_id","3");
                 startActivity(intent);
                 break;
 
             case R.id.cupboard_id:
                 intent = new Intent(HomeActivity.this, ProductListingActivity.class);
                 intent.putExtra("title", "Cupboards");
+                intent.putExtra("product_category_id","4");
                 startActivity(intent);
                 break;
         }
@@ -196,21 +214,25 @@ public class HomeActivity extends BaseActivity implements  NavigationView.OnNavi
             case R.id.table_id:
                 intent=new Intent(HomeActivity.this, ProductListingActivity.class);
                 intent.putExtra("title", "Tables");
+                intent.putExtra("product_category_id","1");
                 startActivity(intent);
                 break;
             case R.id.sofa_id:
                 intent=new Intent(HomeActivity.this, ProductListingActivity.class);
                 intent.putExtra("title", "Sofas");
+                intent.putExtra("product_category_id","3");
                 startActivity(intent);
                 break;
             case R.id.chair_id:
                 intent=new Intent(HomeActivity.this, ProductListingActivity.class);
                 intent.putExtra("title", "Chairs");
+                intent.putExtra("product_category_id","2");
                 startActivity(intent);
                 break;
             case R.id.cupboard_id:
                 intent=new Intent(HomeActivity.this, ProductListingActivity.class);
                 intent.putExtra("title", "Cupboard");
+                intent.putExtra("product_category_id","4");
                 startActivity(intent);
                 break;
             case R.id.my_account_id:

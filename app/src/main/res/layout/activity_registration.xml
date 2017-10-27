@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     android:background="@color/redColor"
     tools:context="com.example.root.neostore.view.login.Activity.RegistrationActivity">
 
@@ -73,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:inputType="textPassword"
                 android:hint="@string/password"
                 android:drawableLeft="@drawable/ic_lock_open"
                 style="@style/Editetxt_style"
@@ -85,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:inputType="textPassword"
                 android:hint="@string/confirm_password"
                 android:drawableLeft="@drawable/ic_lock"
                 style="@style/Editetxt_style"
@@ -110,6 +111,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:id="@+id/rdgender"
                     android:layout_gravity="center"
                     android:weightSum="2"
                     android:layout_marginLeft="20dp">
@@ -117,6 +119,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/male"
+                        android:checked="true"
                         android:text="@string/Male"
                         android:button="@drawable/radiobutton_status"
                         android:layout_weight="1"

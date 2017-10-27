@@ -1,5 +1,6 @@
 package com.example.root.neostore.view.products.Activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -11,16 +12,21 @@ import android.support.v7.widget.Toolbar;
 
 import com.example.root.neostore.R;
 import com.example.root.neostore.common.Base.BaseActivity;
+import com.example.root.neostore.model.ProductListModel;
 import com.example.root.neostore.view.products.Adapter.ProductListingAdapter;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 public class ProductListingActivity extends BaseActivity {
     private Toolbar toolbar;
     private TextView toolbar_header;
-
-
     private ProductListingAdapter mAdapter;
     private RecyclerView mNumberList;
-
+    private String url="http://staging.php-dev.in:8844/trainingapp/api/products/getList";
+    List<ProductListModel> data= Collections.emptyList();
+    String productId;
 
 
 
@@ -46,6 +52,11 @@ public class ProductListingActivity extends BaseActivity {
         toolbar_header=toolbar.findViewById(R.id.title);
         setSupportActionBar(toolbar);
         mNumberList=findViewById(R.id.recyclerview_id);
+        Intent intent=getIntent();
+        productId=intent.getStringExtra("product_category_id");
+
+        ProductListWebRequest productListWebRequest=new ProductListWebRequest(productId,this,mNumberList);
+        productListWebRequest.execute(url);
 
     }
 
@@ -67,10 +78,6 @@ public class ProductListingActivity extends BaseActivity {
     @Override
     public void setAdapter() {
 
-        LinearLayoutManager layoutManager=new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
-        mNumberList.setLayoutManager(layoutManager);
-        mNumberList.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
-        mAdapter=new ProductListingAdapter(this);
-        mNumberList.setAdapter(mAdapter);
+
     }
 }
