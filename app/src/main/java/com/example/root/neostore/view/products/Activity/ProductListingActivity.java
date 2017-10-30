@@ -9,23 +9,31 @@ import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import com.example.root.neostore.R;
 import com.example.root.neostore.common.Base.BaseActivity;
+import com.example.root.neostore.common.Base.BaseAsyncTask;
 import com.example.root.neostore.model.ProductListModel;
 import com.example.root.neostore.view.products.Adapter.ProductListingAdapter;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ProductListingActivity extends BaseActivity {
+public class ProductListingActivity extends BaseActivity implements BaseAsyncTask.onAysncRequest {
     private Toolbar toolbar;
     private TextView toolbar_header;
     private ProductListingAdapter mAdapter;
     private RecyclerView mNumberList;
+    Map<String,Object> parameter=new HashMap<>();
     private String url="http://staging.php-dev.in:8844/trainingapp/api/products/getList";
-    List<ProductListModel> data= Collections.emptyList();
     String productId;
 
 
@@ -54,9 +62,10 @@ public class ProductListingActivity extends BaseActivity {
         mNumberList=findViewById(R.id.recyclerview_id);
         Intent intent=getIntent();
         productId=intent.getStringExtra("product_category_id");
+        parameter.put("product_category_id",productId);
+        BaseAsyncTask baseAsyncTask=new BaseAsyncTask(this,"GET",parameter);
 
-        ProductListWebRequest productListWebRequest=new ProductListWebRequest(productId,this,mNumberList);
-        productListWebRequest.execute(url);
+        baseAsyncTask.execute(url);
 
     }
 
@@ -78,6 +87,47 @@ public class ProductListingActivity extends BaseActivity {
     @Override
     public void setAdapter() {
 
+
+    }
+
+    @Override
+    public void asyncResponse(Object response) {
+        try {
+            JSONObject jsonObject = new JSONObject((String) response);
+            int status = jsonObject.optInt("status");
+            if (status == 200) {
+                List<ProductListModel> data = new ArrayList<>();
+                JSONArray dataArray = jsonObject.optJSONArray("data");
+
+                for (int i = 0; i < dataArray.length(); i++) {
+                    JSONObject dataObject = dataArray.getJSONObject(i);
+                    ProductListModel productListModel = new ProductListModel();
+                    productListModel.setId(dataObject.optInt("id"));
+                    productListModel.setProduct_category_id(dataObject.optInt("product_category_id"));
+                    productListModel.setName(dataObject.optString("name"));
+                    productListModel.setProducer(dataObject.optString("producer"));
+                    productListModel.setDescription(dataObject.optString("description"));
+                    productListModel.setCost(dataObject.optInt("cost"));
+                    productListModel.setRating(dataObject.optInt("rating"));
+                    productListModel.setView_count(dataObject.optInt("view_count"));
+                    productListModel.setCreated(dataObject.optString("created"));
+                    productListModel.setModified(dataObject.optString("modified"));
+                    productListModel.setProduct_images(dataObject.optString("product_images"));
+                    data.add(productListModel);
+                }
+                ProductListingAdapter mAdapter = new ProductListingAdapter(this, data);
+                LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+                mNumberList.setLayoutManager(layoutManager);
+                mNumberList.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+                mNumberList.setAdapter(mAdapter);
+
+
+            } else {
+                Toast.makeText(this, "Error Fetching data", Toast.LENGTH_SHORT).show();
+            }
+        }catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 }

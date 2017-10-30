@@ -14,12 +14,15 @@ import android.widget.Toast;
 
 import com.example.root.neostore.R;
 import com.example.root.neostore.common.Base.BaseActivity;
-import com.example.root.neostore.common.Base.HttpPostAsyncTask;
+import com.example.root.neostore.common.Base.BaseAsyncTask;
+import com.example.root.neostore.model.RegistrationModel;
+
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegistrationActivity extends BaseActivity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener, CompoundButton.OnCheckedChangeListener {
+public class RegistrationActivity extends BaseActivity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener, CompoundButton.OnCheckedChangeListener,BaseAsyncTask.onAysncRequest {
     private TextView textView;
     private TextView loginheader, terms_conditions, male, female, agree, terms;
     private EditText firstname, lastname, password, email, confirm_password, phone;
@@ -117,8 +120,8 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
                 userData.put("gender", selectGender);
                 userData.put("phone_no", String.valueOf(phone.getText()));
 
-                HttpPostAsyncTask httpPostAsyncTask = new HttpPostAsyncTask(userData,this);
-                httpPostAsyncTask.execute(url);
+                BaseAsyncTask baseAsyncTask = new BaseAsyncTask(this,"POST",userData);
+                baseAsyncTask.execute(url);
             }
 
 
@@ -147,6 +150,44 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
             checkCondtion=true;
         }
         else checkCondtion=false;
+
+    }
+
+    @Override
+    public void asyncResponse(Object response) {
+
+            try {
+                JSONObject jsonObject = new JSONObject((String) response);
+                int status = jsonObject.optInt("status");
+                if(status==200) {
+                JSONObject dataObject = jsonObject.optJSONObject("data");
+                RegistrationModel registrationModel = new RegistrationModel();
+
+                registrationModel.setId(dataObject.optInt("id"));
+                registrationModel.setRole_id(dataObject.optInt("role_id"));
+                registrationModel.setFirst_name(dataObject.optString("first_name"));
+                registrationModel.setLast_name(dataObject.optString("last_name"));
+                registrationModel.setEmail(dataObject.optString("email"));
+                registrationModel.setUsername(dataObject.optString("username"));
+                registrationModel.setProfile_pic(dataObject.optString("profile_pic"));
+                registrationModel.setCountry_id(dataObject.optString("country_id"));
+                registrationModel.setGender(dataObject.optString("gender"));
+                registrationModel.setPhone_no(dataObject.optInt("phone_no"));
+                registrationModel.setDob(dataObject.optString("dob"));
+                registrationModel.setIs_active(dataObject.optBoolean("is_active"));
+                registrationModel.setCreated(dataObject.optString("created"));
+                registrationModel.setModified(dataObject.optString("modified"));
+                registrationModel.setAccess_token(dataObject.optString("access_token"));
+
+                finish();
+            }else {
+                    Toast.makeText(this, "invalid  data", Toast.LENGTH_SHORT).show();
+                }
+        }
+       catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
     }
 }

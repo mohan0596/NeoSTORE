@@ -3,7 +3,6 @@ package com.example.root.neostore.view.home;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -12,28 +11,21 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.root.neostore.R;
 import com.example.root.neostore.common.Base.BaseActivity;
-import com.example.root.neostore.view.Address.Activity.AddAddressActivity;
 import com.example.root.neostore.view.Address.Activity.AddressListActivity;
 import com.example.root.neostore.view.Cart.MyCartActivity;
 import com.example.root.neostore.view.Orders.Activity.MyOrdersActivity;
 import com.example.root.neostore.view.login.Activity.LoginActivity;
 import com.example.root.neostore.view.myProfile.MyAccountActivity;
-import com.example.root.neostore.view.products.Activity.ProductDetailActivity;
-import com.example.root.neostore.view.products.Activity.ProductListWebRequest;
 import com.example.root.neostore.view.products.Activity.ProductListingActivity;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 

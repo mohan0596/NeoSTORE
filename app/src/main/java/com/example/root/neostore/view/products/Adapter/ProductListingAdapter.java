@@ -16,7 +16,6 @@ import com.example.root.neostore.R;
 import com.example.root.neostore.model.ProductListModel;
 import com.example.root.neostore.view.products.Activity.ProductDetailActivity;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
