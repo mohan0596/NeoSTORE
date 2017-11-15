@@ -3,6 +3,7 @@ package com.example.root.neostore.view.products.Adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +20,15 @@ import com.example.root.neostore.view.products.Activity.ProductDetailActivity;
 import java.util.Collections;
 import java.util.List;
 
+import static android.content.ContentValues.TAG;
+
 public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAdapter.ItemViewHolder> {
 
     private  Context context;
     ProductListModel current;
      List<ProductListModel> data= Collections.emptyList();
+     public static final String productKey="id";
+
 
     public ProductListingAdapter(Context context,List<ProductListModel> data) {
         this.context=context;
@@ -80,7 +85,7 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
             ItemDetail.setText(current.getProducer());
             ItemRating.setRating(current.getRating());
             Itemprice.setText("Rs."+current.getCost());
-             Glide.with(context).load( current.getProduct_images())
+            Glide.with(context).load( current.getProduct_images())
                      .into(ItemImage);
 
 
@@ -93,6 +98,8 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
             Toast.makeText(view.getContext(),(getAdapterPosition()+1)+" OF "+data.size(),Toast.LENGTH_SHORT).show();
             Intent intent=new Intent(view.getContext(), ProductDetailActivity.class);
             intent.putExtra("Data",  Itemname.getText().toString());
+            intent.putExtra(productKey,String.valueOf(data.get(getAdapterPosition()).getId()));
+            Log.e(TAG, "onClick: "+data.get(getAdapterPosition()).getId() );
             view.getContext().startActivity(intent);
 
         }

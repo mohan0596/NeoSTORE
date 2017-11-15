@@ -16,6 +16,7 @@ import com.example.root.neostore.R;
 import com.example.root.neostore.common.Base.BaseActivity;
 import com.example.root.neostore.common.Base.BaseAsyncTask;
 import com.example.root.neostore.model.RegistrationModel;
+import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
@@ -157,30 +158,15 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
     public void asyncResponse(Object response) {
 
             try {
-                JSONObject jsonObject = new JSONObject((String) response);
-                int status = jsonObject.optInt("status");
-                if(status==200) {
-                JSONObject dataObject = jsonObject.optJSONObject("data");
-                RegistrationModel registrationModel = new RegistrationModel();
+                Gson gson=new Gson();
 
-                registrationModel.setId(dataObject.optInt("id"));
-                registrationModel.setRole_id(dataObject.optInt("role_id"));
-                registrationModel.setFirst_name(dataObject.optString("first_name"));
-                registrationModel.setLast_name(dataObject.optString("last_name"));
-                registrationModel.setEmail(dataObject.optString("email"));
-                registrationModel.setUsername(dataObject.optString("username"));
-                registrationModel.setProfile_pic(dataObject.optString("profile_pic"));
-                registrationModel.setCountry_id(dataObject.optString("country_id"));
-                registrationModel.setGender(dataObject.optString("gender"));
-                registrationModel.setPhone_no(dataObject.optInt("phone_no"));
-                registrationModel.setDob(dataObject.optString("dob"));
-                registrationModel.setIs_active(dataObject.optBoolean("is_active"));
-                registrationModel.setCreated(dataObject.optString("created"));
-                registrationModel.setModified(dataObject.optString("modified"));
-                registrationModel.setAccess_token(dataObject.optString("access_token"));
+                RegistrationModel registrationModel=gson.fromJson(response.toString(), RegistrationModel.class);;
 
-                finish();
-            }else {
+
+
+                if(registrationModel.getStatus()==200) {
+                    finish();
+                    }else {
                     Toast.makeText(this, "invalid  data", Toast.LENGTH_SHORT).show();
                 }
         }
@@ -188,6 +174,12 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
             e.printStackTrace();
         }
 
+
+    }
+
+    @Override
+    public void onFailure(Object response) {
+        Toast.makeText(this, "invalid  data", Toast.LENGTH_SHORT).show();
 
     }
 }

@@ -30,7 +30,7 @@
         <activity android:name=".view.Cart.MyCartActivity" />
         <activity android:name=".view.login.Activity.ResetPassword" />
         <activity android:name=".view.myProfile.MyAccountActivity" />
-        <activity android:name=".view.myProfile.EditProfileActivity"></activity>
+        <activity android:name=".view.myProfile.EditProfileActivity" />
     </application>
 
 </manifest>

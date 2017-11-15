@@ -9,13 +9,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.root.neostore.R;
+import com.example.root.neostore.model.OrderData;
 import com.example.root.neostore.view.Orders.Activity.OrderIdActivity;
+
+import java.util.List;
 
 
 public class MyorderAdapter extends RecyclerView.Adapter<MyorderAdapter.ItemViewHolder> {
+    private final List<OrderData> orderData;
     Context context;
-    public MyorderAdapter(Context context) {
-        this.context=context;
+    public MyorderAdapter(Context context, List<OrderData> orderData) {
+        this.context= context;
+        this.orderData = orderData;
 
     }
 

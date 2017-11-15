@@ -108,7 +108,7 @@
     </style>
 
     <style name="product_description">
-        <item name="android:textSize">@dimen/ten</item>
+        <item name="android:textSize">@dimen/twelve</item>
         <item name="android:textColor">@color/light_black</item>
     </style>
 
@@ -118,12 +118,13 @@
     </style>
 
     <style name="description_style">
-        <item name="android:textSize">@dimen/twelve</item>
+        <item name="android:textSize">@dimen/seventeen</item>
         <item name="android:textColor">@color/description_black</item>
     </style>
     <style name="description_content_style">
         <item name="android:color">@color/black</item>
-        <item name="android:textSize">@dimen/ten</item>
+        <item name="android:textSize">@dimen/fifteen</item>
+
     </style>
 
     <style name="rate_style">

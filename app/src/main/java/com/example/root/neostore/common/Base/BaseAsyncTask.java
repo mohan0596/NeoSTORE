@@ -6,6 +6,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.json.JSONException;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -21,15 +23,15 @@ import static android.content.ContentValues.TAG;
 
 
 public class BaseAsyncTask extends AsyncTask<Object,Object,Object> {
-    Context context;
-    onAysncRequest caller;
-    String method = "GET";
-    Map<String,Object> userData=null;
-    HttpURLConnection urlConnection;
-    int statusCode;
-    StringBuffer stringBuffer;
-    String response;
-    BufferedReader bufferedReader;
+    private Context context;
+    private onAysncRequest caller;
+    private String method = "GET";
+    private Map<String,Object> userData=null;
+    private HttpURLConnection urlConnection;
+    private int statusCode;
+    private StringBuffer stringBuffer;
+    private String response;
+     private BufferedReader bufferedReader;
 
 
 
@@ -39,24 +41,15 @@ public class BaseAsyncTask extends AsyncTask<Object,Object,Object> {
         this.userData = userData;
         caller= (onAysncRequest) context;
     }
-    public BaseAsyncTask(Context context, String method) {
-        this.context = context;
-        this.method = method;
-        caller= (onAysncRequest) context;
 
-    }
-
-    public BaseAsyncTask(Activity context) {
-        this.context = context;
-        caller= (onAysncRequest) context;
-
-    }
 
 
 
     public interface onAysncRequest
     {
-        public void asyncResponse(Object response);
+         void asyncResponse(Object response) throws JSONException;
+
+        void onFailure(Object response);
     }
 
     @Override
@@ -73,7 +66,14 @@ public class BaseAsyncTask extends AsyncTask<Object,Object,Object> {
 
     @Override
     protected void onPostExecute(Object response) {
-        caller.asyncResponse(response);
+        try {
+            if(statusCode==200)
+            caller.asyncResponse(response);
+            else
+                caller.onFailure(response);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     private Object postRequest(String url) {
@@ -96,7 +96,7 @@ public class BaseAsyncTask extends AsyncTask<Object,Object,Object> {
             urlConnection.connect();
 
             statusCode = urlConnection.getResponseCode();
-           return readstatusResponse(statusCode);
+           return readStatusResponse(statusCode);
 
 
 
@@ -111,7 +111,7 @@ public class BaseAsyncTask extends AsyncTask<Object,Object,Object> {
         return null;
     }
 
-    private String readstatusResponse(int statusCode) {
+    private String readStatusResponse(int statusCode) {
         try {
         if (statusCode == 200) {
             bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));

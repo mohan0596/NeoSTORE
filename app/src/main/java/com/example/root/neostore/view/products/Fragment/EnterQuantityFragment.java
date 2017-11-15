@@ -14,9 +14,6 @@ import android.widget.Toast;
 import com.example.root.neostore.R;
 import com.example.root.neostore.view.products.Activity.ProductDetailActivity;
 
-/**
- * Created by root on 11/10/17.
- */
 
 public class EnterQuantityFragment extends DialogFragment implements View.OnClickListener {
     private Button btnsubmit;

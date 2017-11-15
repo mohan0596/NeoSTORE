@@ -15,8 +15,11 @@ import android.widget.Toast;
 import com.example.root.neostore.R;
 import com.example.root.neostore.common.Base.BaseActivity;
 import com.example.root.neostore.common.Base.BaseAsyncTask;
+import com.example.root.neostore.common.Base.BaseModel;
 import com.example.root.neostore.model.RegistrationModel;
 import com.example.root.neostore.view.home.HomeActivity;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -123,47 +126,36 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
     @Override
     public void asyncResponse(Object response) {
+
+
         try {
 
-                JSONObject jsonObject=new JSONObject((String) response);
-                int status=jsonObject.optInt("status");
-            if(status==200) {
-                JSONObject dataObject=jsonObject.optJSONObject("data");
-                RegistrationModel registrationModel=new RegistrationModel();
-                registrationModel.setId(dataObject.optInt("id"));
-                registrationModel.setRole_id(dataObject.optInt("role_id"));
-                registrationModel.setFirst_name(dataObject.optString("first_name"));
-                registrationModel.setLast_name(dataObject.optString("last_name"));
-                registrationModel.setEmail(dataObject.optString("email"));
-                registrationModel.setUsername(dataObject.optString("username"));
-                registrationModel.setProfile_pic(dataObject.optString("profile_pic"));
-                registrationModel.setCountry_id(dataObject.optString("country_id"));
-                registrationModel.setGender(dataObject.optString("gender"));
-                registrationModel.setPhone_no(dataObject.optInt("phone_no"));
-                registrationModel.setDob(dataObject.optString("dob"));
-                registrationModel.setIs_active(dataObject.optBoolean("is_active"));
-                registrationModel.setCreated(dataObject.optString("created"));
-                registrationModel.setModified(dataObject.optString("modified"));
-                registrationModel.setAccess_token(dataObject.optString("access_token"));
-                SharedPreferences sharedPreferences=getSharedPreferences("loginkey", Context.MODE_PRIVATE);
+            Gson gson=new Gson();
 
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString("email", String.valueOf(registrationModel.getEmail()));
-                editor.putString("usr_name",String.valueOf(registrationModel.getUsername()));
-                editor.commit();
-                Intent i=new Intent(this,HomeActivity.class);
-                startActivity(i);
-                finish();
+            RegistrationModel registrationModel= gson.fromJson(response.toString(), RegistrationModel.class);;
+                    SharedPreferences sharedPreferences = getSharedPreferences("loginkey", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("email", String.valueOf(registrationModel.getEmail()));
+                    editor.putString("usr_name", String.valueOf(registrationModel.getUsername()));
+                    editor.commit();
+                    Intent i = new Intent(this, HomeActivity.class);
+                    startActivity(i);
+                    finish();
+                    Log.e(TAG, "asyncResponse: "+ registrationModel.getFirst_name() );
 
-            }
-            else {
-                Log.e(TAG, "not registered: " );
-                Toast.makeText(this, "invalid username or password", Toast.LENGTH_SHORT).show();
-            }
-
-        } catch (JSONException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
+
+
+
+
+    }
+
+    @Override
+    public void onFailure(Object response) {
+        Toast.makeText(this, "Invalid username or Password", Toast.LENGTH_SHORT).show();
     }
 }
 

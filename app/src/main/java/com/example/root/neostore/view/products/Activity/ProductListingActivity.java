@@ -130,4 +130,9 @@ public class ProductListingActivity extends BaseActivity implements BaseAsyncTas
         }
 
     }
+
+    @Override
+    public void onFailure(Object response) {
+
+    }
 }

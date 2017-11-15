@@ -8,14 +8,27 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.root.neostore.R;
+import com.example.root.neostore.common.Base.APIClient;
+import com.example.root.neostore.common.Base.Api;
 import com.example.root.neostore.common.Base.BaseActivity;
+import com.example.root.neostore.model.OrderData;
+import com.example.root.neostore.model.OrderListModel;
 import com.example.root.neostore.view.Orders.Adapter.MyorderAdapter;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MyOrdersActivity extends BaseActivity {
     private MyorderAdapter mAdapter;
     private RecyclerView recyclerView;
+    String token;
     private Toolbar toolbar;
+    Api api;
     private TextView title;
+    private List<OrderListModel> orderData;
 
 
     @Override
@@ -28,6 +41,26 @@ public class MyOrdersActivity extends BaseActivity {
         toolbar=findViewById(R.id.my_toolbar);
         title=toolbar.findViewById(R.id.title);
         recyclerView=findViewById(R.id.recyclerview_id);
+        api=APIClient.getClient().create(Api.class);
+        Call<OrderListModel> call=api.getOrderList(token);
+        call.enqueue(new Callback<OrderListModel>() {
+            @Override
+            public void onResponse(Call<OrderListModel> call, Response<OrderListModel> response) {
+                List<OrderData> orderData =response.body().getData();
+
+               mAdapter=new MyorderAdapter(MyOrdersActivity.this, orderData);
+               recyclerView.setAdapter(mAdapter);
+
+
+
+            }
+
+            @Override
+            public void onFailure(Call<OrderListModel> call, Throwable t) {
+
+            }
+        });
+
 
     }
 
@@ -51,8 +84,7 @@ public class MyOrdersActivity extends BaseActivity {
         LinearLayoutManager layoutManager=new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-        mAdapter=new MyorderAdapter(this);
-        recyclerView.setAdapter(mAdapter);
+
         recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
     }
 
