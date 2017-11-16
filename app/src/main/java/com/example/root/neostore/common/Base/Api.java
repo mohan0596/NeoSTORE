@@ -1,12 +1,17 @@
 package com.example.root.neostore.common.Base;
 
 
+import com.example.root.neostore.model.CartModel.QuantityModel.AddToCartResponse;
 import com.example.root.neostore.model.OrderListModel;
 import com.example.root.neostore.model.ProductDetailModel;
+import com.example.root.neostore.model.RatingModel.RatingResponse;
 
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface Api {
@@ -16,4 +21,12 @@ public interface Api {
 
         @GET("products/getDetail")
         Call<ProductDetailModel> getDetail(@Query("product_id") int id);
+
+        @POST("products/setRating")
+        @FormUrlEncoded
+        Call<RatingResponse> setRating(@Field("product_id") int id);
+
+        @POST("addToCart")
+        @FormUrlEncoded
+        Call<AddToCartResponse> addToCart(@Field("product_id") int id,@Field("quantity") int quantity);
 }

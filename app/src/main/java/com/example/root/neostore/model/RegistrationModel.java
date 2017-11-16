@@ -9,6 +9,9 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class RegistrationModel extends BaseModel {
+    @SerializedName("data")
+    public Data data;
+    public class Data {
 
         @SerializedName("id")
         private int id;
@@ -162,6 +165,6 @@ public class RegistrationModel extends BaseModel {
             this.access_token = access_token;
         }
 
-
+    }
 
 }

@@ -1,6 +1,9 @@
 package com.example.root.neostore.view.products.Activity;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Picture;
+import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
@@ -31,6 +34,7 @@ import com.example.root.neostore.view.products.Adapter.ProductListingAdapter;
 import com.example.root.neostore.view.products.Fragment.EnterQuantityFragment;
 import com.example.root.neostore.view.products.Fragment.RatingPopupFragment;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +51,7 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
     private ImageView Share;
     private Button buyNow,rateProduct;
     DataItem dataItems;
+    List<ProductImagesItem> productImagesItems;
 
     private ViewPager viewPager;
     ImageView img_item;
@@ -56,6 +61,8 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
     TextView txt_product_name,txt_product_cateogory,txt_product_details;
     RatingBar ratingBar;
     TextView txt_price,txt_descrption;
+
+    String s;
 
 
 
@@ -104,7 +111,7 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
         Intent intent=getIntent();
 
 
-        String s=intent.getStringExtra(ProductListingAdapter.productKey);
+         s=intent.getStringExtra(ProductListingAdapter.productKey);
         apicall= APIClient.getClient().create(Api.class);
         Log.e(TAG, "initView: "+s );
         Call<ProductDetailModel> call=apicall.getDetail(Integer.parseInt(s));
@@ -113,7 +120,7 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
             @Override
             public void onResponse(Call<ProductDetailModel> call, Response<ProductDetailModel> response) {
                 dataItems= (DataItem) response.body().getData();
-                List<ProductImagesItem> productImagesItems = dataItems.getProductImages();
+                productImagesItems = dataItems.getProductImages();
 
                 Log.e(TAG, "onResponse: "+productImagesItems );
 
@@ -181,7 +188,9 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
     @Override
     public void onClick(View view) {
         Intent intent;
+        Bundle bundle;
         switch (view.getId()){
+
             case R.id.share_id:
                  intent=new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
@@ -192,12 +201,24 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
                 break;
 
             case R.id.buy_now_id:
+                 bundle=new Bundle();
+                bundle.putString("product_id",s);
+                bundle.putString("image",productImagesItems.get(0).getImage());
+                bundle.putString("category", String.valueOf(dataItems.getProductCategoryId()));
                 DialogFragment dialogFragment=new EnterQuantityFragment();
+                dialogFragment.setArguments(bundle);
                 dialogFragment.show(getSupportFragmentManager(),"buy_product");
                 break;
 
             case R.id.Rate_button_id:
+                img_item.buildDrawingCache();
+               // Bitmap bitmap = img_item.getDrawingCache();
+                bundle=new Bundle();
+                bundle.putString("product_id",s);
+                bundle.putString("image",productImagesItems.get(0).getImage());
+                bundle.putString("category", String.valueOf(dataItems.getProductCategoryId()));
                 DialogFragment dialogFragment1=new RatingPopupFragment();
+                dialogFragment1.setArguments(bundle);
                 dialogFragment1.show(getSupportFragmentManager(),"Rate_product");
                 break;
 

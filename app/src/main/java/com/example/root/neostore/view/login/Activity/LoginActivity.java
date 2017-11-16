@@ -30,7 +30,9 @@ import java.util.Map;
 public class LoginActivity extends BaseActivity implements View.OnClickListener,BaseAsyncTask.onAysncRequest {
     private TextView loginheader,forgotpass,no_account;
     private EditText emailId,password;
+    RegistrationModel registrationModel;
     private Button login;
+    SharedPreferences sharedPreferences;
     private ImageView addAccount;
     private static final String TAG = LoginActivity.class.getSimpleName();
     private String url="http://staging.php-dev.in:8844/trainingapp/api/users/login";
@@ -51,7 +53,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         login=findViewById(R.id.login_id);
         addAccount=findViewById(R.id.plus_id);
 
-        SharedPreferences sharedPreferences=getApplicationContext().getSharedPreferences("loginkey", Context.MODE_PRIVATE);
+        sharedPreferences=getApplicationContext().getSharedPreferences("loginkey", Context.MODE_PRIVATE);
 
         if (sharedPreferences.contains("usr_name")) {
 
@@ -111,9 +113,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
             password.setError("Password is required");
         }
         else {
-
-
-
             Map<String, Object> userData = new HashMap<>();
             userData.put("email", emailId.getText().toString());
             userData.put("password", password.getText().toString());
@@ -132,16 +131,18 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
             Gson gson=new Gson();
 
-            RegistrationModel registrationModel= gson.fromJson(response.toString(), RegistrationModel.class);;
-                    SharedPreferences sharedPreferences = getSharedPreferences("loginkey", Context.MODE_PRIVATE);
+             registrationModel= gson.fromJson(response.toString(), RegistrationModel.class);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("email", String.valueOf(registrationModel.getEmail()));
-                    editor.putString("usr_name", String.valueOf(registrationModel.getUsername()));
-                    editor.commit();
+                    Log.e(TAG, "asyncResponse: "+ registrationModel);
+                    editor.putString("email", String.valueOf(registrationModel.data.getEmail()));
+                    editor.putString("usr_name", String.valueOf(registrationModel.data.getUsername()));
+                    editor.putString("access_token",String.valueOf(registrationModel.data.getAccess_token()));
+                    Log.e(TAG, "access token: "+ registrationModel.data.getAccess_token());
+                    editor.apply();
                     Intent i = new Intent(this, HomeActivity.class);
                     startActivity(i);
                     finish();
-                    Log.e(TAG, "asyncResponse: "+ registrationModel.getFirst_name() );
+                    Log.e(TAG, "first name: "+ registrationModel.data.getFirst_name() );
 
         } catch (Exception e) {
             e.printStackTrace();

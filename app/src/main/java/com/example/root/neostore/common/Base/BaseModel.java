@@ -1,5 +1,6 @@
 package com.example.root.neostore.common.Base;
 
+import com.example.root.neostore.model.RatingModel.RatingResponse;
 import com.example.root.neostore.model.RegistrationModel;
 import com.google.gson.annotations.SerializedName;
 
@@ -10,22 +11,29 @@ import com.google.gson.annotations.SerializedName;
 public class BaseModel {
     @SerializedName("status")
     private int status;
-    @SerializedName("data")
-    public RegistrationModel data;
+
+
+
+
+
+  /*  @SerializedName("data")
+    public RatingResponse ratingData;*/
+
     public int getStatus() {
         return status;
     }
 
-    public RegistrationModel getData() {
-        return data;
-    }
-
-    public void setData(RegistrationModel data) {
-        this.data = data;
-    }
 
     public void setStatus(int status) {
         this.status = status;
     }
+
+  /*  public RatingResponse getRatingData() {
+        return ratingData;
+    }
+
+    public void setRatingData(RatingResponse ratingData) {
+        this.ratingData = ratingData;
+    }*/
 
 }

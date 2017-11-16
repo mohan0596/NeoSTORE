@@ -2,7 +2,9 @@ package com.example.root.neostore.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ProductImagesItem{
+import java.io.Serializable;
+
+public class ProductImagesItem implements Serializable{
 	@SerializedName("image")
 	private String image;
 	@SerializedName("created")
