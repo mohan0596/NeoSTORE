@@ -1,12 +1,8 @@
-package com.example.root.neostore.model;
+package com.example.root.neostore.model.user;
 
 import com.example.root.neostore.common.Base.BaseModel;
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by root on 25/10/17.
- */
 
 public class RegistrationModel extends BaseModel {
     @SerializedName("data")

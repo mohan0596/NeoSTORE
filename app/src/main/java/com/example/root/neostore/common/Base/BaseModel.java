@@ -1,7 +1,5 @@
 package com.example.root.neostore.common.Base;
 
-import com.example.root.neostore.model.RatingModel.RatingResponse;
-import com.example.root.neostore.model.RegistrationModel;
 import com.google.gson.annotations.SerializedName;
 
 /**

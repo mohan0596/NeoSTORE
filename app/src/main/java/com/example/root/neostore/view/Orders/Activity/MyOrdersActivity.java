@@ -1,9 +1,12 @@
 package com.example.root.neostore.view.Orders.Activity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -11,8 +14,8 @@ import com.example.root.neostore.R;
 import com.example.root.neostore.common.Base.APIClient;
 import com.example.root.neostore.common.Base.Api;
 import com.example.root.neostore.common.Base.BaseActivity;
-import com.example.root.neostore.model.OrderData;
-import com.example.root.neostore.model.OrderListModel;
+import com.example.root.neostore.model.OrderModel.OrderData;
+import com.example.root.neostore.model.OrderModel.OrderListModel;
 import com.example.root.neostore.view.Orders.Adapter.MyorderAdapter;
 
 import java.util.List;
@@ -22,14 +25,15 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MyOrdersActivity extends BaseActivity {
+    private static final String TAG = MyOrdersActivity.class.getSimpleName();
     private MyorderAdapter mAdapter;
     private RecyclerView recyclerView;
     String token;
+    SharedPreferences sharedPreferences;
     private Toolbar toolbar;
     Api api;
     private TextView title;
-    private List<OrderListModel> orderData;
-
+    private  List<OrderData> orderData;
 
     @Override
     protected int getContentView() {
@@ -41,15 +45,24 @@ public class MyOrdersActivity extends BaseActivity {
         toolbar=findViewById(R.id.my_toolbar);
         title=toolbar.findViewById(R.id.title);
         recyclerView=findViewById(R.id.recyclerview_id);
+
+        sharedPreferences=getApplicationContext().getSharedPreferences("loginkey", Context.MODE_PRIVATE);
+        token=sharedPreferences.getString("access_token","");
+        Log.e(TAG, "token: "+token );
+
         api=APIClient.getClient().create(Api.class);
         Call<OrderListModel> call=api.getOrderList(token);
         call.enqueue(new Callback<OrderListModel>() {
             @Override
             public void onResponse(Call<OrderListModel> call, Response<OrderListModel> response) {
-                List<OrderData> orderData =response.body().getData();
+                 orderData =response.body().getData();
+                 Log.e(TAG, "onResponse: "+orderData );
 
-               mAdapter=new MyorderAdapter(MyOrdersActivity.this, orderData);
-               recyclerView.setAdapter(mAdapter);
+
+                LinearLayoutManager layoutManager=new LinearLayoutManager(MyOrdersActivity.this,LinearLayoutManager.VERTICAL,false);
+                recyclerView.setLayoutManager(layoutManager);
+                mAdapter=new MyorderAdapter(MyOrdersActivity.this, orderData);
+                recyclerView.setAdapter(mAdapter);
 
 
 
@@ -81,8 +94,7 @@ public class MyOrdersActivity extends BaseActivity {
 
     @Override
     protected void setAdapter() {
-        LinearLayoutManager layoutManager=new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
-        recyclerView.setLayoutManager(layoutManager);
+
         recyclerView.setHasFixedSize(true);
 
         recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));

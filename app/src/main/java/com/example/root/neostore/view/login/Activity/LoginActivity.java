@@ -1,6 +1,5 @@
 package com.example.root.neostore.view.login.Activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,14 +14,9 @@ import android.widget.Toast;
 import com.example.root.neostore.R;
 import com.example.root.neostore.common.Base.BaseActivity;
 import com.example.root.neostore.common.Base.BaseAsyncTask;
-import com.example.root.neostore.common.Base.BaseModel;
-import com.example.root.neostore.model.RegistrationModel;
+import com.example.root.neostore.model.user.RegistrationModel;
 import com.example.root.neostore.view.home.HomeActivity;
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -87,9 +81,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         Intent intent;
         switch (view.getId()){
             case R.id.login_id:
-
                 validate();
-
                 break;
 
             case R.id.plus_id:

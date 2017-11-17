@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,7 +20,11 @@ import com.bumptech.glide.Glide;
 import com.example.root.neostore.R;
 import com.example.root.neostore.common.Base.APIClient;
 import com.example.root.neostore.common.Base.Api;
-import com.example.root.neostore.view.products.Activity.ProductDetailActivity;
+import com.example.root.neostore.model.CartModel.QuantityModel.AddToCartResponse;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static android.content.ContentValues.TAG;
 
@@ -35,7 +38,7 @@ public class EnterQuantityFragment extends DialogFragment implements View.OnClic
     private EditText et_quantity;
     Api apicall;
 
-
+    String quantity;
     String s,s1,title;
 
     @Override
@@ -49,6 +52,11 @@ public class EnterQuantityFragment extends DialogFragment implements View.OnClic
         iv_product=view.findViewById(R.id.product_img_id);
         tv_quantity=view.findViewById(R.id.quantity_text_id);
         et_quantity=view.findViewById(R.id.quantity_id);
+
+
+
+
+        Log.e(TAG, "quantity: "+quantity );
 
         sharedPreferences=getActivity().getSharedPreferences("loginkey", Context.MODE_PRIVATE);
         pref=sharedPreferences.getString("access_token","");
@@ -71,8 +79,8 @@ public class EnterQuantityFragment extends DialogFragment implements View.OnClic
                 break;
             case "4":tv_category.setText("Cupboards");
                 break;
-
         }
+
         Glide.with(getContext()).load(s1).into(iv_product);
         return builder.create();
     }
@@ -81,8 +89,27 @@ public class EnterQuantityFragment extends DialogFragment implements View.OnClic
 
     @Override
     public void onClick(View view) {
-        Toast.makeText(getActivity(),"kk", Toast.LENGTH_SHORT).show();
+        quantity= et_quantity.getText().toString();
+        if(quantity.length()>0) {
+            apicall = APIClient.getClient().create(Api.class);
+            Call<AddToCartResponse> call = apicall.addToCart(pref, Integer.parseInt(s), Integer.parseInt(quantity));
+            call.enqueue(new Callback<AddToCartResponse>() {
+                @Override
+                public void onResponse(Call<AddToCartResponse> call, Response<AddToCartResponse> response) {
+                }
 
-        apicall= APIClient.getClient().create(Api.class);
+                @Override
+                public void onFailure(Call<AddToCartResponse> call, Throwable t) {
+                    Toast.makeText(getActivity(), "Exception" + t, Toast.LENGTH_SHORT).show();
+
+                }
+
+
+            });
+            dismiss();
+        }
+        else
+            Toast.makeText(getActivity(), "Please Enter the quantity", Toast.LENGTH_SHORT).show();
     }
+
 }

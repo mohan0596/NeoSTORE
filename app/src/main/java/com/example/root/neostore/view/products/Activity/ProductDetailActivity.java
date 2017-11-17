@@ -46,14 +46,11 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
     private static final String TAG =ProductDetailActivity.class.getSimpleName() ;
     private Toolbar toolbar;
     private TextView title;
-    private PagerAdapter pagerAdapter;
-    ProductDetailModel detailModel;
     private ImageView Share;
     private Button buyNow,rateProduct;
     DataItem dataItems;
     List<ProductImagesItem> productImagesItems;
 
-    private ViewPager viewPager;
     ImageView img_item;
     private RecyclerView recyclerView;
     private ProductDetailsAdapter mAdapter;
@@ -63,8 +60,6 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
     TextView txt_price,txt_descrption;
 
     String s;
-
-
 
 
     @Override
@@ -128,19 +123,19 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
                 Log.e(TAG, "onResponse: "+dataItems.getName() );
 
                 switch (dataItems.getProductCategoryId()){
-                    case 1:txt_product_cateogory.setText("Category-Tables");
+                    case 1:txt_product_cateogory.setText(R.string.table);
                             break;
-                    case 2:txt_product_cateogory.setText("Category-Chairs");
+                    case 2:txt_product_cateogory.setText(R.string.chair);
                         break;
-                    case 3:txt_product_cateogory.setText("Category-Sofas");
+                    case 3:txt_product_cateogory.setText(R.string.sofa);
                         break;
-                    case 4:txt_product_cateogory.setText("Category-Cupboards");
+                    case 4:txt_product_cateogory.setText(R.string.cupboard);
                         break;
 
                 }
                 txt_product_details.setText(dataItems.getProducer());
                 ratingBar.setRating(dataItems.getRating());
-                txt_price.setText("Rs. "+dataItems.getCost());
+                txt_price.setText("Rs. " + dataItems.getCost());
                 txt_descrption.setText(dataItems.getDescription());
                Glide.with(ProductDetailActivity.this).load(productImagesItems.get(0).getImage())
                 .into(img_item);
@@ -172,7 +167,6 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
         String s=getIntent().getStringExtra("Data");
         title.setText(s);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_left);
 
@@ -194,7 +188,6 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
             case R.id.share_id:
                  intent=new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
-                //  intent.putExtra(intent.EXTRA_TEXT,"");
                 Intent chooser=Intent.createChooser(intent,"Share");
                 if(intent.resolveActivity(getPackageManager())!=null)
                     startActivity(chooser);
@@ -212,7 +205,6 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
 
             case R.id.Rate_button_id:
                 img_item.buildDrawingCache();
-               // Bitmap bitmap = img_item.getDrawingCache();
                 bundle=new Bundle();
                 bundle.putString("product_id",s);
                 bundle.putString("image",productImagesItems.get(0).getImage());

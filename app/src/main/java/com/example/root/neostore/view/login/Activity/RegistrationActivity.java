@@ -15,10 +15,8 @@ import android.widget.Toast;
 import com.example.root.neostore.R;
 import com.example.root.neostore.common.Base.BaseActivity;
 import com.example.root.neostore.common.Base.BaseAsyncTask;
-import com.example.root.neostore.model.RegistrationModel;
+import com.example.root.neostore.model.user.RegistrationModel;
 import com.google.gson.Gson;
-
-import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;

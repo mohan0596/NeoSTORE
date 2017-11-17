@@ -1,21 +1,20 @@
-package com.example.root.neostore.model;
+package com.example.root.neostore.model.account.myAccount;
 
-import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class OrderListModel{
+public class MyAccountResponse{
 
 	@SerializedName("data")
-	private List<OrderData> data;
+	private Data data;
 
 	@SerializedName("status")
 	private int status;
 
-	public void setData(List<OrderData> data){
+	public void setData(Data data){
 		this.data = data;
 	}
 
-	public List<OrderData> getData(){
+	public Data getData(){
 		return data;
 	}
 
@@ -30,7 +29,7 @@ public class OrderListModel{
 	@Override
  	public String toString(){
 		return 
-			"OrderListModel{" + 
+			"MyAccountResponse{" + 
 			"data = '" + data + '\'' + 
 			",status = '" + status + '\'' + 
 			"}";

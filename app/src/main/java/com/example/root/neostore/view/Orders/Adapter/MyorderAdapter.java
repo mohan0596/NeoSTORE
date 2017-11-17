@@ -9,15 +9,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.root.neostore.R;
-import com.example.root.neostore.model.OrderData;
+import com.example.root.neostore.model.OrderModel.OrderData;
+import com.example.root.neostore.model.OrderModel.OrderListModel;
 import com.example.root.neostore.view.Orders.Activity.OrderIdActivity;
 
 import java.util.List;
 
 
 public class MyorderAdapter extends RecyclerView.Adapter<MyorderAdapter.ItemViewHolder> {
-    private final List<OrderData> orderData;
-    Context context;
+    private List<OrderData> orderData;
+    private Context context;
+
     public MyorderAdapter(Context context, List<OrderData> orderData) {
         this.context= context;
         this.orderData = orderData;
@@ -25,20 +27,19 @@ public class MyorderAdapter extends RecyclerView.Adapter<MyorderAdapter.ItemView
     }
 
     @Override
-    public MyorderAdapter.ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context=parent.getContext();
         LayoutInflater inflater=LayoutInflater.from(context);
-        View view=inflater.inflate(R.layout.order_list,null,false);
-        MyorderAdapter.ItemViewHolder viewHolder=new MyorderAdapter.ItemViewHolder(view);
+        View view=inflater.inflate(R.layout.order_list,parent,false);
 
-        return viewHolder;
+        return new ItemViewHolder(view);
 
 
     }
 
     @Override
-    public void onBindViewHolder(MyorderAdapter.ItemViewHolder holder, int position) {
-        holder.bind();
+    public void onBindViewHolder(ItemViewHolder holder, int position) {
+        holder.bind(position);
 
     }
 
@@ -46,26 +47,27 @@ public class MyorderAdapter extends RecyclerView.Adapter<MyorderAdapter.ItemView
 
     @Override
     public int getItemCount() {
-        return 4;
+        return orderData.size();
     }
 
 
     class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView order_no,order_date,price;
 
-        public ItemViewHolder(View itemView) {
+        ItemViewHolder(View itemView) {
             super(itemView);
-            itemView.setOnClickListener(this);
-            order_no=itemView.findViewById(R.id.ordrer_id);
+
+            order_no=itemView.findViewById(R.id.tv_id);
             order_date=itemView.findViewById(R.id.order_date_id);
             price=itemView.findViewById(R.id.price_id);
+            itemView.setOnClickListener(this);
         }
 
 
-        public void bind() {
-            order_no.setText(R.string.order_id);
-            order_date.setText(R.string.order_date);
-            price.setText(R.string.price);
+        void bind(int position) {
+            order_no.setText(String.valueOf(orderData.get(position).getId()));
+            order_date.setText(String.valueOf(orderData.get(position).getCreated()));
+            price.setText(String.valueOf("Rs. "+orderData.get(position).getCost()));
         }
 
         @Override
