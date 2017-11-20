@@ -14,8 +14,8 @@ import com.example.root.neostore.R;
 import com.example.root.neostore.common.Base.APIClient;
 import com.example.root.neostore.common.Base.Api;
 import com.example.root.neostore.common.Base.BaseActivity;
-import com.example.root.neostore.model.OrderModel.OrderData;
-import com.example.root.neostore.model.OrderModel.OrderListModel;
+import com.example.root.neostore.model.OrderModel.orderList.OrderData;
+import com.example.root.neostore.model.OrderModel.orderList.OrderListModel;
 import com.example.root.neostore.view.Orders.Adapter.MyorderAdapter;
 
 import java.util.List;

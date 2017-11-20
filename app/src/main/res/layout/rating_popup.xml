@@ -21,7 +21,8 @@
         android:layout_below="@+id/product_category_id"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="33dp"
-        android:scaleType="centerCrop"
+        android:layout_marginLeft="@dimen/twenty_seven"
+        android:layout_marginRight="@dimen/twenty_seven"
         app:srcCompat="@drawable/slider_img2" />
 
     <RatingBar
@@ -38,7 +39,7 @@
 
 
     <Button
-        android:id="@+id/rate_now_id"
+        android:id="@+id/btn_rate_now_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ratingBar_id"

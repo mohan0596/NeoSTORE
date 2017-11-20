@@ -1,4 +1,4 @@
-package com.example.root.neostore.model.OrderModel;
+package com.example.root.neostore.model.OrderModel.orderList;
 
 import com.google.gson.annotations.SerializedName;
 

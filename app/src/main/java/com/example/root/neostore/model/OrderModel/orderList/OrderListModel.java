@@ -1,7 +1,8 @@
-package com.example.root.neostore.model.OrderModel;
+package com.example.root.neostore.model.OrderModel.orderList;
 
 import java.util.List;
 
+import com.example.root.neostore.model.OrderModel.orderList.OrderData;
 import com.google.gson.annotations.SerializedName;
 
 public class OrderListModel{

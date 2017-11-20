@@ -2,9 +2,13 @@ package com.example.root.neostore.common.Base;
 
 
 import com.example.root.neostore.model.CartModel.QuantityModel.AddToCartResponse;
-import com.example.root.neostore.model.OrderModel.OrderListModel;
+import com.example.root.neostore.model.OrderModel.order.OrderResponse;
+import com.example.root.neostore.model.OrderModel.orderList.OrderListModel;
 import com.example.root.neostore.model.ProductDetailModel;
 import com.example.root.neostore.model.RatingModel.RatingResponse;
+import com.example.root.neostore.model.account.myAccount.MyAccountResponse;
+import com.example.root.neostore.model.account.myAccount.UserData;
+import com.example.root.neostore.model.user.ChangePasswd;
 import com.example.root.neostore.model.user.ForgoPassResponse;
 
 import retrofit2.Call;
@@ -34,4 +38,16 @@ public interface Api {
         @POST("users/forgot")
         @FormUrlEncoded
         Call<ForgoPassResponse> forgot(@Field("email") String email);
+
+        @POST("users/change")
+        @FormUrlEncoded
+        Call<ChangePasswd> changePassword(@Header("access_token") String token,@Field("old_password") String old_password,
+                                        @Field("password") String password,@Field("confirm_password") String confirm_password);
+
+        @GET("users/getUserData")
+        Call<MyAccountResponse> getUserData(@Header("access_token") String token);
+
+        @POST("order")
+        @FormUrlEncoded
+        Call<OrderResponse> placeOrder(@Header("access_token") String token,@Field("address") String address);
 }

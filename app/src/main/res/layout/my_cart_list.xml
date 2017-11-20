@@ -50,6 +50,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/quantity_spinner_id"
                 android:layout_marginLeft="@dimen/seventeen"
+                android:overlapAnchor="false"
                 android:background="@drawable/spinner_field"
                 />
 

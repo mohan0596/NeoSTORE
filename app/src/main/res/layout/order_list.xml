@@ -17,7 +17,7 @@
         android:text="@string/order_id" />
 
     <TextView
-        android:id="@+id/ordrer_id"
+        android:id="@+id/tv_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/order_style"
