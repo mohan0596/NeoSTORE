@@ -3,6 +3,7 @@ package com.example.root.neostore.common.Base;
 
 import com.example.root.neostore.model.CartModel.QuantityModel.AddToCartResponse;
 import com.example.root.neostore.model.OrderModel.order.OrderResponse;
+import com.example.root.neostore.model.OrderModel.orderDetail.OrderDetailModel;
 import com.example.root.neostore.model.OrderModel.orderList.OrderListModel;
 import com.example.root.neostore.model.ProductDetailModel;
 import com.example.root.neostore.model.RatingModel.RatingResponse;
@@ -50,4 +51,8 @@ public interface Api {
         @POST("order")
         @FormUrlEncoded
         Call<OrderResponse> placeOrder(@Header("access_token") String token,@Field("address") String address);
+
+        @GET("orderDetail")
+        Call<OrderDetailModel> getOrderDetail(@Header("access_token") String token,
+                                              @Query("order_id") int order_id);
 }

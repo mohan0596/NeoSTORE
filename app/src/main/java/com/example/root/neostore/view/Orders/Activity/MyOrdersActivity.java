@@ -58,12 +58,10 @@ public class MyOrdersActivity extends BaseActivity {
                  orderData =response.body().getData();
                  Log.e(TAG, "onResponse: "+orderData );
 
-
                 LinearLayoutManager layoutManager=new LinearLayoutManager(MyOrdersActivity.this,LinearLayoutManager.VERTICAL,false);
                 recyclerView.setLayoutManager(layoutManager);
                 mAdapter=new MyorderAdapter(MyOrdersActivity.this, orderData);
                 recyclerView.setAdapter(mAdapter);
-
 
 
             }

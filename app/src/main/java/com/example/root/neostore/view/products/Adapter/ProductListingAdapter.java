@@ -97,7 +97,7 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
 
             Toast.makeText(view.getContext(),(getAdapterPosition()+1)+" OF "+data.size(),Toast.LENGTH_SHORT).show();
             Intent intent=new Intent(view.getContext(), ProductDetailActivity.class);
-            intent.putExtra("Data",  Itemname.getText().toString());
+            intent.putExtra("OrderData",  Itemname.getText().toString());
             intent.putExtra(productKey,String.valueOf(data.get(getAdapterPosition()).getId()));
             Log.e(TAG, "onClick: "+data.get(getAdapterPosition()).getId() );
             view.getContext().startActivity(intent);

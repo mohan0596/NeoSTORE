@@ -5,18 +5,23 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.root.neostore.R;
+import com.example.root.neostore.model.OrderModel.orderDetail.OrderDetailsItem;
 
-/**
- * Created by root on 12/10/17.
- */
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class OrderIdAdapter extends RecyclerView.Adapter<OrderIdAdapter.ItemViewHolder> {
     Context context;
-    public OrderIdAdapter(Context context) {
+    private List<OrderDetailsItem> detailsItemList=new ArrayList<>();
+    public OrderIdAdapter(Context context, List<OrderDetailsItem> detailsItemList) {
         this.context=context;
+        this.detailsItemList=detailsItemList;
 
     }
 
@@ -24,7 +29,7 @@ public class OrderIdAdapter extends RecyclerView.Adapter<OrderIdAdapter.ItemView
     public OrderIdAdapter.ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context=parent.getContext();
         LayoutInflater inflater=LayoutInflater.from(context);
-        View view=inflater.inflate(R.layout.order_id_list,null,false);
+        View view=inflater.inflate(R.layout.order_id_list,parent,false);
         OrderIdAdapter.ItemViewHolder viewHolder=new OrderIdAdapter.ItemViewHolder(view);
         return viewHolder;
 
@@ -42,12 +47,13 @@ public class OrderIdAdapter extends RecyclerView.Adapter<OrderIdAdapter.ItemView
 
     @Override
     public int getItemCount() {
-        return 4;
+        return detailsItemList.size();
     }
 
 
     class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView Name,Category,Quantity,price;
+        ImageView iv_product_image;
 
         public ItemViewHolder(View itemView) {
             super(itemView);
@@ -56,14 +62,18 @@ public class OrderIdAdapter extends RecyclerView.Adapter<OrderIdAdapter.ItemView
             Category=itemView.findViewById(R.id.product_category_id);
             Quantity=itemView.findViewById(R.id.quantity_id);
             price=itemView.findViewById(R.id.price_id);
+            iv_product_image=itemView.findViewById(R.id.product_img_id);
         }
 
 
         public void bind(int position) {
-            Name.setText(R.string.Tables);
-            Category.setText("(sofa)");
-            Quantity.setText("QTY:5");
-            price.setText("price");
+            Name.setText(detailsItemList.get(position).getProdName());
+            Category.setText("("+detailsItemList.get(position).getProdCatName()+")");
+            Quantity.setText(String.valueOf("QTY:"+detailsItemList.get(position).getQuantity()));
+            price.setText(String.valueOf(detailsItemList.get(position).getTotal()));
+            Glide.with(context).load(detailsItemList.get(position).getProdImage())
+                    .into(iv_product_image);
+
         }
 
         @Override

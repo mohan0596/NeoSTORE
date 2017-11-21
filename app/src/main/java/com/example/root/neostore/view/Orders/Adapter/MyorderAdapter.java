@@ -3,6 +3,7 @@ package com.example.root.neostore.view.Orders.Adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,14 +11,17 @@ import android.widget.TextView;
 
 import com.example.root.neostore.R;
 import com.example.root.neostore.model.OrderModel.orderList.OrderData;
+import com.example.root.neostore.view.Orders.Activity.MyOrdersActivity;
 import com.example.root.neostore.view.Orders.Activity.OrderIdActivity;
 
 import java.util.List;
 
 
 public class MyorderAdapter extends RecyclerView.Adapter<MyorderAdapter.ItemViewHolder> {
+    private static final String TAG = MyOrdersActivity.class.getSimpleName();
     private List<OrderData> orderData;
     private Context context;
+    String id;
 
     public MyorderAdapter(Context context, List<OrderData> orderData) {
         this.context= context;
@@ -72,6 +76,9 @@ public class MyorderAdapter extends RecyclerView.Adapter<MyorderAdapter.ItemView
         @Override
         public void onClick(View view) {
             Intent intent =new Intent(context,OrderIdActivity.class);
+            id= String.valueOf(orderData.get(getAdapterPosition()).getId());
+            intent.putExtra("id",id);
+            Log.e(TAG, "id "+id );
             view.getContext().startActivity(intent);
         }
 

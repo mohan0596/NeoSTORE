@@ -164,7 +164,7 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
 
     @Override
     public void setActionBar() {
-        String s=getIntent().getStringExtra("Data");
+        String s=getIntent().getStringExtra("OrderData");
         title.setText(s);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
