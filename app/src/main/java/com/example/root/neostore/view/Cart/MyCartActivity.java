@@ -2,22 +2,16 @@ package com.example.root.neostore.view.Cart;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.root.neostore.R;
 import com.example.root.neostore.common.Base.BaseActivity;
-import com.example.root.neostore.view.Orders.Adapter.OrderIdAdapter;
 
 public class MyCartActivity extends BaseActivity {
 

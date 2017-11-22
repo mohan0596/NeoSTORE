@@ -10,8 +10,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.root.neostore.R;
-import com.example.root.neostore.view.Orders.Adapter.OrderIdAdapter;
-
 
 
 public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ItemViewHolder> {

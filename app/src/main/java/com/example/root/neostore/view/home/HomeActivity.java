@@ -21,7 +21,7 @@ import com.example.root.neostore.R;
 import com.example.root.neostore.common.Base.BaseActivity;
 import com.example.root.neostore.view.Address.Activity.AddressListActivity;
 import com.example.root.neostore.view.Cart.MyCartActivity;
-import com.example.root.neostore.view.Orders.Activity.MyOrdersActivity;
+import com.example.root.neostore.view.Orders.Activity.OrderListActivity;
 import com.example.root.neostore.view.login.Activity.LoginActivity;
 import com.example.root.neostore.view.myProfile.MyAccountActivity;
 import com.example.root.neostore.view.products.Activity.ProductListingActivity;
@@ -234,7 +234,7 @@ public class HomeActivity extends BaseActivity implements  NavigationView.OnNavi
             case R.id.store_locators_id:
                 return true;
             case R.id.my_orders_id:
-                intent=new Intent(HomeActivity.this, MyOrdersActivity.class);
+                intent=new Intent(HomeActivity.this, OrderListActivity.class);
                 startActivity(intent);
                 break;
             case R.id.my_address_id:

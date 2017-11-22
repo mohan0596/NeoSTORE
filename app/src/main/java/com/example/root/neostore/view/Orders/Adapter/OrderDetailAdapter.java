@@ -16,21 +16,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class OrderIdAdapter extends RecyclerView.Adapter<OrderIdAdapter.ItemViewHolder> {
+public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.ItemViewHolder> {
     Context context;
     private List<OrderDetailsItem> detailsItemList=new ArrayList<>();
-    public OrderIdAdapter(Context context, List<OrderDetailsItem> detailsItemList) {
+    public OrderDetailAdapter(Context context, List<OrderDetailsItem> detailsItemList) {
         this.context=context;
         this.detailsItemList=detailsItemList;
 
     }
 
     @Override
-    public OrderIdAdapter.ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public OrderDetailAdapter.ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context=parent.getContext();
         LayoutInflater inflater=LayoutInflater.from(context);
         View view=inflater.inflate(R.layout.order_id_list,parent,false);
-        OrderIdAdapter.ItemViewHolder viewHolder=new OrderIdAdapter.ItemViewHolder(view);
+        OrderDetailAdapter.ItemViewHolder viewHolder=new OrderDetailAdapter.ItemViewHolder(view);
         return viewHolder;
 
 
@@ -70,7 +70,7 @@ public class OrderIdAdapter extends RecyclerView.Adapter<OrderIdAdapter.ItemView
             Name.setText(detailsItemList.get(position).getProdName());
             Category.setText("("+detailsItemList.get(position).getProdCatName()+")");
             Quantity.setText(String.valueOf("QTY:"+detailsItemList.get(position).getQuantity()));
-            price.setText(String.valueOf(detailsItemList.get(position).getTotal()));
+            price.setText("Rs."+String.valueOf(detailsItemList.get(position).getTotal()));
             Glide.with(context).load(detailsItemList.get(position).getProdImage())
                     .into(iv_product_image);
 

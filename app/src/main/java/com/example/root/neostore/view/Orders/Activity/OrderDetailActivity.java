@@ -17,7 +17,7 @@ import com.example.root.neostore.common.Base.BaseActivity;
 import com.example.root.neostore.model.OrderModel.orderDetail.OrderData;
 import com.example.root.neostore.model.OrderModel.orderDetail.OrderDetailModel;
 import com.example.root.neostore.model.OrderModel.orderDetail.OrderDetailsItem;
-import com.example.root.neostore.view.Orders.Adapter.OrderIdAdapter;
+import com.example.root.neostore.view.Orders.Adapter.OrderDetailAdapter;
 
 import java.util.List;
 
@@ -25,10 +25,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class OrderIdActivity extends BaseActivity {
+public class OrderDetailActivity extends BaseActivity {
 
-    private static final String TAG = OrderIdActivity.class.getSimpleName();
-    private OrderIdAdapter mAdapter;
+    private static final String TAG = OrderDetailActivity.class.getSimpleName();
+    private OrderDetailAdapter mAdapter;
     private RecyclerView recyclerView;
     private TextView tv_total_price;
     private android.support.v7.widget.Toolbar toolbar;
@@ -72,13 +72,14 @@ public class OrderIdActivity extends BaseActivity {
                     Log.e(TAG, "orderDetailResponse: " + detailModel);
                     detailsItemList = response.body().getOrderData().getOrderDetails();
 
-                    tv_total_price.setText(String.valueOf(detailModel.getOrderData().getCost()));
+                    tv_total_price.setText("Rs."+String.valueOf(detailModel.getOrderData().getCost()));
 
-                    LinearLayoutManager layoutManager = new LinearLayoutManager(OrderIdActivity.this, LinearLayoutManager.VERTICAL, false);
+                    mAdapter = new OrderDetailAdapter(OrderDetailActivity.this, detailsItemList);
+                    LinearLayoutManager layoutManager = new LinearLayoutManager(OrderDetailActivity.this, LinearLayoutManager.VERTICAL, false);
                     recyclerView.setLayoutManager(layoutManager);
-                    recyclerView.addItemDecoration(new DividerItemDecoration(OrderIdActivity.this,DividerItemDecoration.VERTICAL));
+                    recyclerView.addItemDecoration(new DividerItemDecoration(OrderDetailActivity.this,DividerItemDecoration.VERTICAL));
                     recyclerView.setHasFixedSize(true);
-                    mAdapter = new OrderIdAdapter(OrderIdActivity.this, detailsItemList);
+
                     recyclerView.setAdapter(mAdapter);
                 }
 

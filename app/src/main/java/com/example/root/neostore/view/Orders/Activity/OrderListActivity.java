@@ -16,7 +16,7 @@ import com.example.root.neostore.common.Base.Api;
 import com.example.root.neostore.common.Base.BaseActivity;
 import com.example.root.neostore.model.OrderModel.orderList.OrderData;
 import com.example.root.neostore.model.OrderModel.orderList.OrderListModel;
-import com.example.root.neostore.view.Orders.Adapter.MyorderAdapter;
+import com.example.root.neostore.view.Orders.Adapter.OrderListAdapter;
 
 import java.util.List;
 
@@ -24,9 +24,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MyOrdersActivity extends BaseActivity {
-    private static final String TAG = MyOrdersActivity.class.getSimpleName();
-    private MyorderAdapter mAdapter;
+public class OrderListActivity extends BaseActivity {
+    private static final String TAG = OrderListActivity.class.getSimpleName();
+    private OrderListAdapter mAdapter;
     private RecyclerView recyclerView;
     String token;
     SharedPreferences sharedPreferences;
@@ -58,9 +58,9 @@ public class MyOrdersActivity extends BaseActivity {
                  orderData =response.body().getData();
                  Log.e(TAG, "onResponse: "+orderData );
 
-                LinearLayoutManager layoutManager=new LinearLayoutManager(MyOrdersActivity.this,LinearLayoutManager.VERTICAL,false);
+                LinearLayoutManager layoutManager=new LinearLayoutManager(OrderListActivity.this,LinearLayoutManager.VERTICAL,false);
                 recyclerView.setLayoutManager(layoutManager);
-                mAdapter=new MyorderAdapter(MyOrdersActivity.this, orderData);
+                mAdapter=new OrderListAdapter(OrderListActivity.this, orderData);
                 recyclerView.setAdapter(mAdapter);
 
 
