@@ -1,4 +1,4 @@
-package com.example.root.neostore.view.home;
+package com.example.root.neostore.view.home.adapter;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;

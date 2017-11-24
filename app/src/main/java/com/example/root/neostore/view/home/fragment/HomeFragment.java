@@ -1,4 +1,4 @@
-package com.example.root.neostore.view.home;
+package com.example.root.neostore.view.home.fragment;
 
 import android.content.Context;
 import android.net.Uri;

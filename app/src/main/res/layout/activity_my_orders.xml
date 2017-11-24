@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:fitsSystemWindows="true"
-    tools:context="com.example.root.neostore.view.Orders.Activity.MyOrdersActivity">
+    tools:context="com.example.root.neostore.view.Orders.Activity.OrderListActivity">
     <include layout="@layout/toolbar"/>
 
     <include layout="@layout/recyclerview"/>

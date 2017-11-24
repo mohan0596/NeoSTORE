@@ -21,6 +21,7 @@ import com.example.root.neostore.R;
 import com.example.root.neostore.common.Base.APIClient;
 import com.example.root.neostore.common.Base.Api;
 import com.example.root.neostore.model.CartModel.QuantityModel.AddToCartResponse;
+import com.example.root.neostore.view.products.Activity.ProductDetailActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -70,16 +71,8 @@ public class EnterQuantityFragment extends DialogFragment implements View.OnClic
             title=getArguments().getString("category");
         }
 
-        switch (title){
-            case "1":tv_category.setText("Tables");
-                break;
-            case "2":tv_category.setText("Chairs");
-                break;
-            case "3":tv_category.setText("Sofas");
-                break;
-            case "4":tv_category.setText("Cupboards");
-                break;
-        }
+
+       tv_category.setText(title);
 
         Glide.with(getContext()).load(s1).into(iv_product);
         return builder.create();
@@ -88,7 +81,7 @@ public class EnterQuantityFragment extends DialogFragment implements View.OnClic
 
 
     @Override
-    public void onClick(View view) {
+    public void onClick(final View view) {
         quantity= et_quantity.getText().toString();
         if(quantity.length()>0) {
             apicall = APIClient.getClient().create(Api.class);
@@ -96,11 +89,12 @@ public class EnterQuantityFragment extends DialogFragment implements View.OnClic
             call.enqueue(new Callback<AddToCartResponse>() {
                 @Override
                 public void onResponse(Call<AddToCartResponse> call, Response<AddToCartResponse> response) {
+                    Toast.makeText(view.getContext(), "Added to cart", Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
                 public void onFailure(Call<AddToCartResponse> call, Throwable t) {
-                    Toast.makeText(getActivity(), "Exception" + t, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(view.getContext().getApplicationContext(), "Exception" + t, Toast.LENGTH_SHORT).show();
 
                 }
 

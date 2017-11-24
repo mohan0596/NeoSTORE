@@ -1,13 +1,8 @@
 package com.example.root.neostore.view.products.Activity;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Picture;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.content.Intent;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -28,14 +23,11 @@ import com.example.root.neostore.common.Base.BaseActivity;
 import com.example.root.neostore.model.DataItem;
 import com.example.root.neostore.model.ProductDetailModel;
 import com.example.root.neostore.model.ProductImagesItem;
-import com.example.root.neostore.view.home.HomeBannerSliderAdapter;
 import com.example.root.neostore.view.products.Adapter.ProductDetailsAdapter;
 import com.example.root.neostore.view.products.Adapter.ProductListingAdapter;
 import com.example.root.neostore.view.products.Fragment.EnterQuantityFragment;
 import com.example.root.neostore.view.products.Fragment.RatingPopupFragment;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -50,7 +42,7 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
     private Button buyNow,rateProduct;
     DataItem dataItems;
     List<ProductImagesItem> productImagesItems;
-
+    String category;
     ImageView img_item;
     private RecyclerView recyclerView;
     private ProductDetailsAdapter mAdapter;
@@ -164,8 +156,8 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
 
     @Override
     public void setActionBar() {
-        String s=getIntent().getStringExtra("OrderData");
-        title.setText(s);
+        category=getIntent().getStringExtra("OrderData");
+        title.setText(category);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_left);
@@ -197,7 +189,7 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
                  bundle=new Bundle();
                 bundle.putString("product_id",s);
                 bundle.putString("image",productImagesItems.get(0).getImage());
-                bundle.putString("category", String.valueOf(dataItems.getProductCategoryId()));
+                bundle.putString("category", category);
                 DialogFragment dialogFragment=new EnterQuantityFragment();
                 dialogFragment.setArguments(bundle);
                 dialogFragment.show(getSupportFragmentManager(),"buy_product");
@@ -208,7 +200,7 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
                 bundle=new Bundle();
                 bundle.putString("product_id",s);
                 bundle.putString("image",productImagesItems.get(0).getImage());
-                bundle.putString("category", String.valueOf(dataItems.getProductCategoryId()));
+                bundle.putString("category", category);
                 DialogFragment dialogFragment1=new RatingPopupFragment();
                 dialogFragment1.setArguments(bundle);
                 dialogFragment1.show(getSupportFragmentManager(),"Rate_product");

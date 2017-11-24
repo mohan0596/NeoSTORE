@@ -8,9 +8,11 @@
     android:fitsSystemWindows="true"
     tools:context="com.example.root.neostore.view.Cart.MyCartActivity">
     <include layout="@layout/toolbar" />
-    <ScrollView
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -54,22 +56,23 @@
                 android:background="?android:attr/listDivider"
                 />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/order_now"
-                android:layout_marginTop="@dimen/twenty_seven"
-                android:layout_marginLeft="@dimen/fifteen"
-                android:layout_marginRight="@dimen/fifteen"
-                android:layout_marginBottom="@dimen/thirteen"
-                style="@style/save_address"/>
 
 
 
 
 
         </LinearLayout>
-    </ScrollView>
+    </android.support.v4.widget.NestedScrollView>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/order_now"
+        android:layout_marginTop="@dimen/twenty_seven"
+        android:layout_marginLeft="@dimen/fifteen"
+        android:layout_marginRight="@dimen/fifteen"
+        android:layout_marginBottom="@dimen/thirteen"
+        style="@style/save_address"/>
+
 
 
 </LinearLayout>

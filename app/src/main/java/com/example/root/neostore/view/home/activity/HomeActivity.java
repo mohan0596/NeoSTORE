@@ -1,4 +1,4 @@
-package com.example.root.neostore.view.home;
+package com.example.root.neostore.view.home.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -22,6 +22,7 @@ import com.example.root.neostore.common.Base.BaseActivity;
 import com.example.root.neostore.view.Address.Activity.AddressListActivity;
 import com.example.root.neostore.view.Cart.MyCartActivity;
 import com.example.root.neostore.view.Orders.Activity.OrderListActivity;
+import com.example.root.neostore.view.home.adapter.HomeBannerSliderAdapter;
 import com.example.root.neostore.view.login.Activity.LoginActivity;
 import com.example.root.neostore.view.myProfile.MyAccountActivity;
 import com.example.root.neostore.view.products.Activity.ProductListingActivity;

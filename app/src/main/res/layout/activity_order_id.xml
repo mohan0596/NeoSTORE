@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context="com.example.root.neostore.view.Orders.Activity.OrderIdActivity">
+    tools:context="com.example.root.neostore.view.Orders.Activity.OrderDetailActivity">
 
     <include layout="@layout/toolbar" />
     <ScrollView
@@ -38,7 +38,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/total_price_id"
+                android:id="@+id/txt_total"
                 android:layout_weight="1"
                 android:layout_marginRight="@dimen/fifteen"
                 android:paddingRight="@dimen/ten"

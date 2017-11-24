@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/product_category_id"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="33dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="@dimen/twenty_seven"
         android:layout_marginRight="@dimen/twenty_seven"
         app:srcCompat="@drawable/slider_img2" />
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="33dp"
         style="@style/enter_quantity"
-        android:text="@string/Tables"
+        android:text="@string/enter_qty"
         android:layout_below="@+id/product_img_id"
         android:layout_centerHorizontal="true" />
 

@@ -1,6 +1,8 @@
 package com.example.root.neostore.common.Base;
 
 
+import com.example.root.neostore.model.CartModel.DeleteCartModel.DeleteCartModel;
+import com.example.root.neostore.model.CartModel.ListCartModel.CartResponse;
 import com.example.root.neostore.model.CartModel.QuantityModel.AddToCartResponse;
 import com.example.root.neostore.model.OrderModel.order.OrderResponse;
 import com.example.root.neostore.model.OrderModel.orderDetail.OrderDetailModel;
@@ -8,7 +10,6 @@ import com.example.root.neostore.model.OrderModel.orderList.OrderListModel;
 import com.example.root.neostore.model.ProductDetailModel;
 import com.example.root.neostore.model.RatingModel.RatingResponse;
 import com.example.root.neostore.model.account.myAccount.MyAccountResponse;
-import com.example.root.neostore.model.account.myAccount.UserData;
 import com.example.root.neostore.model.user.ChangePasswd;
 import com.example.root.neostore.model.user.ForgoPassResponse;
 
@@ -55,4 +56,11 @@ public interface Api {
         @GET("orderDetail")
         Call<OrderDetailModel> getOrderDetail(@Header("access_token") String token,
                                               @Query("order_id") int order_id);
+
+        @GET("cart")
+        Call<CartResponse> getCart(@Header("access_token") String token);
+
+        @POST("deleteCart")
+        @FormUrlEncoded
+        Call<DeleteCartModel> deleteCart(@Header("access_token") String token,@Field("product_id") int id);
 }

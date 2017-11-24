@@ -71,6 +71,14 @@
         <item>3</item>
         <item>4</item>
         <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>11</item>
+        <item>12</item>
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -80,5 +88,7 @@
     <string name="chair">Category-Chairs</string>
     <string name="sofa">Category-Sofas</string>
     <string name="cupboard">Category-Cupboards</string>
+    <string name="google_maps_key">AIzaSyDPyIbQJQxOvMzjN0qu2eLJ0sl8z-D3Dog</string>
+    <string name="enter_qty">Enter Qty</string>
 
 </resources>

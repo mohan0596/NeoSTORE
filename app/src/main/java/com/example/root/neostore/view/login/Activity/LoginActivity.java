@@ -15,7 +15,7 @@ import com.example.root.neostore.R;
 import com.example.root.neostore.common.Base.BaseActivity;
 import com.example.root.neostore.common.Base.BaseAsyncTask;
 import com.example.root.neostore.model.user.RegistrationModel;
-import com.example.root.neostore.view.home.HomeActivity;
+import com.example.root.neostore.view.home.activity.HomeActivity;
 import com.google.gson.Gson;
 
 import java.util.HashMap;

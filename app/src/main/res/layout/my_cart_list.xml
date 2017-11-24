@@ -51,6 +51,8 @@
                 android:id="@+id/quantity_spinner_id"
                 android:layout_marginLeft="@dimen/seventeen"
                 android:overlapAnchor="false"
+                android:dropDownVerticalOffset="50dp"
+                android:dropDownHeight="match_parent"
                 android:background="@drawable/spinner_field"
                 />
 

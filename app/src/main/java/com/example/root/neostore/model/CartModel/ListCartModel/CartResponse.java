@@ -3,7 +3,7 @@ package com.example.root.neostore.model.CartModel.ListCartModel;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class Response{
+public class CartResponse {
 
 	@SerializedName("total")
 	private double total;
@@ -52,7 +52,7 @@ public class Response{
 	@Override
  	public String toString(){
 		return 
-			"Response{" + 
+			"CartResponse{" +
 			"total = '" + total + '\'' + 
 			",data = '" + data + '\'' + 
 			",count = '" + count + '\'' + 
